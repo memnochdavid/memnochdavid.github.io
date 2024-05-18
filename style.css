@@ -1,11 +1,30 @@
 *{
-    margin: 0;
+    /* margin: 0; */
     /* background-color:rgb(17, 17, 17); */
+    color: whitesmoke
 }
-/* body div{
-    background-color: rgb(70, 70, 70);
-} */
-div{
-    border: 1px solid black;
-    border-color: rgb(0, 0, 0);
+body{
+    background-color: rgb(27, 27, 27);
+    
+}
+#col-avatar{
+    border: 1px solid rgb(158, 158, 158);
+    background-color: rgb(80, 80, 80);
+    display: flex;
+    justify-content: center;
+}
+#col-resto{
+    border: 1px solid rgb(158, 158, 158);
+    background-color: rgb(80, 80, 80);
+}
+.card{
+    background-color: rgb(80, 80, 80);
+}
+
+.card-body{
+    background-color: rgb(80, 80, 80);
+}
+#avatar{
+    border: none;
+    background-color:;
 }
