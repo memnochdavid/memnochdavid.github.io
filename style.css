@@ -4,14 +4,18 @@
     color: whitesmoke
 }
 body{
-    background-color: rgb(27, 27, 27);
-    
+    background-color: black;
+    background-position: center;
+}
+body>div{
+    background-color: rgba(255, 228, 196, 0.288);
+    border: 1px solid rgb(158, 158, 158);
 }
 #col-avatar{
     border: 1px solid rgb(158, 158, 158);
     background-color: rgb(80, 80, 80);
-    display: flex;
-    justify-content: center;
+    /* display: flex;
+    justify-content: center; */
 }
 #col-resto{
     border: 1px solid rgb(158, 158, 158);
@@ -21,10 +25,12 @@ body{
     background-color: rgb(80, 80, 80);
 }
 
-.card-body{
-    background-color: rgb(80, 80, 80);
+.card{
+    background-color: none;
+    border: none;
 }
+
 #avatar{
     border: none;
-    background-color:;
+    background-color:none;
 }
