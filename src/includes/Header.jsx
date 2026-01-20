@@ -21,7 +21,7 @@ function Header({ textLogo1, textLogo2, color1 = "white", color2 = "indigo" }) {
             <nav className="flex gap-2">
                 <Boton texto="Actividades" url="/actividades" color="indigo" />
                 <Boton texto="Contacto" url="/contacto" color="indigo" />
-                <Boton texto="Currículum Vitae" url="/cv" color="indigo" principal={true} />
+                <Boton texto="Descarga CV" url="/cv" color="indigo" principal={true} />
             </nav>
         </header>
     );

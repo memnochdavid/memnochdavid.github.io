@@ -1,5 +1,5 @@
 
-function Powered( {size = "h-8 w-8", spacing = "mx-2", color = "white"} ) {
+function Powered( {size = "h-8 w-8", spacing = "mx-2 my-5"} ) {
 
     const className=`${size} ${spacing}`;
     return (

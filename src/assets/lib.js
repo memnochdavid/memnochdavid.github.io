@@ -17,8 +17,10 @@ const TONO_SECUNDARIO_TEXT = 400;
 // Generador automático de strings completos para botones
 export const coloresButton = familias.reduce((acc, color) => {
     acc[color] = {
-        primario: `bg-${color}-${TONO_PRIMARIO_BUTTON} text-white hover:bg-${color}-${TONO_PRIMARIO_BUTTON_HOVER} px-4 py-2 rounded-lg font-semibold transition-colors duration-200`,
-        secundario: `text-${color}-${TONO_SECUNDARIO_BUTTON} hover:bg-${color}-${TONO_SECUNDARIO_BUTTON_HOVER} px-4 py-2 rounded-lg font-semibold transition-colors duration-200`
+        primario: `bg-${color}-${TONO_PRIMARIO_BUTTON} text-white hover:bg-${color}-${TONO_PRIMARIO_BUTTON_HOVER} 
+        px-4 py-2 rounded-lg font-semibold transition-colors duration-200`,
+        secundario: `text-${color}-${TONO_SECUNDARIO_BUTTON} hover:bg-${color}-${TONO_SECUNDARIO_BUTTON_HOVER} 
+        px-4 py-2 rounded-lg font-semibold transition-colors duration-200`
     };
     return acc;
 }, {});
