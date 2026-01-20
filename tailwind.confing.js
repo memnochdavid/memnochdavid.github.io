@@ -8,5 +8,6 @@ export default {
         extend: {},
     },
     plugins: [],
+    pattern: /(border|text|bg|hover:bg|ring|hover:border)-(.+)-(\d{2,3})/
 
 }

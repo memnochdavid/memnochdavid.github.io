@@ -13,6 +13,9 @@ const TONO_SECUNDARIO_BUTTON = 600;
 const TONO_SECUNDARIO_BUTTON_HOVER = 200;
 const TONO_PRIMARIO_TEXT = 700;
 const TONO_SECUNDARIO_TEXT = 400;
+const TONO_PRIMARIO_BORDER = 700;
+const TONO_SECUNDARIO_BORDER = 400;
+
 
 // Generador automático de strings completos para botones
 export const coloresButton = familias.reduce((acc, color) => {
@@ -30,6 +33,14 @@ export const coloresText = familias.reduce((acc, color) => {
     acc[color] = {
         primario: `text-${color}-${TONO_PRIMARIO_TEXT}`,
         secundario: `text-${color}-${TONO_SECUNDARIO_TEXT}`
+    };
+    return acc;
+}, {});
+
+export const coloresBorder = familias.reduce((acc, color) => {
+    acc[color] = {
+        primario: `border-${color}-${TONO_PRIMARIO_BORDER}`,
+        secundario: `border-${color}-${TONO_SECUNDARIO_BORDER}`
     };
     return acc;
 }, {});
