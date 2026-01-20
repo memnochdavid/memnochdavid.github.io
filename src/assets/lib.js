@@ -1,4 +1,4 @@
-// Familias de colores de Tailwind
+//colores
 const familias = [
     "slate","gray","zinc","neutral","stone",
     "red","orange","amber","yellow","lime",
@@ -6,7 +6,7 @@ const familias = [
     "blue","indigo","violet","purple","fuchsia","pink","rose"
 ];
 
-// Tonos recomendados
+//tonos
 const TONO_PRIMARIO_BUTTON = 600;
 const TONO_PRIMARIO_BUTTON_HOVER = 700;
 const TONO_SECUNDARIO_BUTTON = 600;
@@ -37,6 +37,7 @@ export const coloresText = familias.reduce((acc, color) => {
     return acc;
 }, {});
 
+//bordes
 export const coloresBorder = familias.reduce((acc, color) => {
     acc[color] = {
         primario: `border-${color}-${TONO_PRIMARIO_BORDER}`,
