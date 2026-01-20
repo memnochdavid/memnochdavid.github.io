@@ -1,25 +1,27 @@
 import Boton from '../components/Button.jsx';
+import { coloresText } from "../assets/lib.js";
 
-function Header() {
-    const headerClassName = "flex justify-between items-center p-4 border-b border-gray-200 bg-white";
-
-
+function Header({ textLogo1, textLogo2, color1 = "white", color2 = "indigo" }) {
     return (
-        <header className={headerClassName}>
-            {/*logo */}
-            <h1 className="text-xl font-bold text-gray-800">
-                Mi Proyecto <span className="text-blue-600">React</span>
-            </h1>
+        <header
+            className="
+        flex justify-between items-center p-4 border-b border-slate-950 bg-sky-950 h-[8vh] fixed z-10 w-full
+        shadow-[0_10px_10px_rgba(0,0,0,0.5)] select-none
+      "
+        >
+            {/* logo */}
+            <a href="/" className={`text-xl font-bold ${coloresText[color1]?.primario || "text-white"}`}>
+                {textLogo1}{" "}
+                <span className={coloresText[color2]?.primario || "text-indigo-600"}>
+          {textLogo2}
+        </span>
+            </a>
 
-            {/* Lado derecho: Menú de navegación usando nuestros botones */}
+            {/* botones */}
             <nav className="flex gap-2">
-                {/* 2. Reutilizamos el componente pasándole distintos "argumentos" */}
-                <Boton texto="Inicio" url="/" />
-                <Boton texto="Servicios" url="/servicios" />
-                <Boton texto="Contacto" url="/contacto" />
-
-                {/* Este último es especial, le pasamos la prop 'principal' */}
-                <Boton texto="Login" url="/login" principal={true} />
+                <Boton texto="Actividades" url="/actividades" color="indigo" />
+                <Boton texto="Contacto" url="/contacto" color="indigo" />
+                <Boton texto="Currículum Vitae" url="/cv" color="indigo" principal={true} />
             </nav>
         </header>
     );
