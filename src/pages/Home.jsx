@@ -147,6 +147,18 @@ export default function Home() {
                             principal= "false"
                         />
                         <Item
+                            text= "Kotlin"
+                            urlImgFlag= "../public/img/icon-kotlin.svg"
+                            color= "indigo"
+                            principal= "false"
+                        />
+                        <Item
+                            text= "Firebase"
+                            urlImgFlag= "../public/img/icon-firebase.svg"
+                            color= "indigo"
+                            principal= "false"
+                        />
+                        <Item
                             text= "Jetpack Compose"
                             urlImgFlag= "../public/img/icon-jpcompose.svg"
                             color= "indigo"
