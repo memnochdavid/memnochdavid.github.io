@@ -17,7 +17,8 @@ export default function Home() {
                     <div className= "flex flex-col justify-center items-center gap-5">
 
                         <a className="text-xl underline font-bold text-gray-900" href="mailto:davduquediaz@gmail.com">davduquediaz@gmail.com</a>
-                        <h3 className="text-xl underline font-bold text-gray-900">(+34) 622 71 58 86</h3>
+                        <a className="text-xl underline font-bold text-gray-900" href="tel:+34622715886">(+34) 622 71 58 86</a>
+
                     </div>
 
                     <div className="flex flex-col justify-center items-center gap-5">
