@@ -27,9 +27,9 @@ const TONO_SECUNDARIO_ITEM_HOVER = 300;
 export const coloresButton = familias.reduce((acc, color) => {
     acc[color] = {
         primario: `bg-${color}-${TONO_PRIMARIO_BUTTON} text-white hover:bg-${color}-${TONO_PRIMARIO_BUTTON_HOVER} 
-        px-4 py-2 rounded-lg font-semibold transition-colors duration-200`,
+        px-3 py-1.5 md:px-4 md:py-2 rounded-lg font-semibold transition-colors duration-200 text-sm md:text-base`,
         secundario: `text-${color}-${TONO_SECUNDARIO_BUTTON} hover:bg-${color}-${TONO_SECUNDARIO_BUTTON_HOVER} 
-        px-4 py-2 rounded-lg font-semibold transition-colors duration-200`
+        px-3 py-1.5 md:px-4 md:py-2 rounded-lg font-semibold transition-colors duration-200 text-sm md:text-base`
     };
     return acc;
 }, {});
