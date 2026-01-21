@@ -12,9 +12,9 @@ export default function Home() {
             <main className="py-8 min-h-[92vh] flex flex-col justify-start gap-8 items-center w-full">
 
                 <section className="text-center flex flex-col md:flex-row gap-6 md:gap-2 justify-between items-center bg-sky-700/50
-                    w-full pt-25 pb-10 px-6 md:px-15 md:justify-start border-b border-slate-950 shadow-[0_10px_10px_rgba(0,0,0,0.5)]">
+                    w-full pt-25 pb-10 px-6 md:px-15 border-b border-slate-950 shadow-[0_10px_10px_rgba(0,0,0,0.5)]">
                     <Profile avatarUrl={"img/avatar.jpg"}/>
-                    <div className= "flex flex-col justify-center items-center gap-5">
+                    <div className= "flex flex-col justify-center items-center gap-5 md:justify-start md:items-start">
 
                         <a className="text-xl underline font-bold text-gray-900" href="mailto:davduquediaz@gmail.com">davduquediaz@gmail.com</a>
                         <a className="text-xl underline font-bold text-gray-900" href="tel:+34622715886">(+34) 622 71 58 86</a>
