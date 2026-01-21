@@ -233,7 +233,7 @@ export default function Home() {
                         />
                         <Item
                             text= "Symfony"
-                            urlImgFlag= "img/icon-symfony.svg"
+                            urlImgFlag= "img/icon-symfony.png"
                             color= "indigo"
                             principal= "false"
                         />
