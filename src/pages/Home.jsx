@@ -140,7 +140,7 @@ export default function Home() {
                 <section className= "flex flex-col px-6 md:px-15 justify-start items-start gap-5
                     w-full">
                     <Separator text = "Skills" color = "indigo" />
-                    <div className="flex flex-wrap w-full gap-4 md:gap-8 items-center justify-center md:justify-start px-4 md:px-10">
+                    <div className="flex flex-wrap w-full gap-4 md:gap-8 items-center justify-start px-4 md:px-10">
                         <Item
                             text= "Android"
                             urlImgFlag= "img/icon-android.svg"
