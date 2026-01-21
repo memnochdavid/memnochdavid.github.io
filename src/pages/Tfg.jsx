@@ -4,11 +4,11 @@ import Footer from "../includes/Footer.jsx";
 export default function Tfg() {
     return (
         <div className="min-h-screen bg-stone-100">
-            <Header textLogo1="Mi" textLogo2="Portfolio" color1= "white" color2="indigo" />
+            <Header textLogo1="My" textLogo2="Portfolio" color1= "white" color2="indigo" />
 
             <main className="flex flex-col md:flex-row justify-between items-center w-full pt-17">
 
-                <div className="bg-gray-900 w-full md:w-[50vw] h-[80vh]
+                <div className="bg-gray-900 w-full md:w-[70vw] h-[80vh]
                 scroll-smooth overflow-auto
                 [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-track]:bg-transparent
                 [&::-webkit-scrollbar-thumb]:bg-red-400
@@ -85,17 +85,28 @@ export default function Tfg() {
                     </div>
                 </div>
 
-                <div className="w-full md:w-[50vw] h-[80vh]">
+                <div className="w-full md:w-[30vw] h-[80vh]">
                     <iframe
-                        src="/resources/Docu Dexter.pdf#view=FitH&navpanes=0&scrollbar=0&toolbar=0"
-
+                        src="https://www.youtube.com/embed/M_38TnAimME"
                         className="w-full h-full rounded-lg border-2 border-slate-300"
-                        title="Documentación TFG - Dexter"
+                        title="Video Demo TFG - Dexter"
                         frameBorder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                         allowFullScreen
-                        allow="fullscreen"
                     />
                 </div>
+
+                {/*<div className="w-full md:w-[50vw] h-[80vh]">*/}
+                {/*    <iframe*/}
+                {/*        src="/resources/Docu Dexter.pdf#view=FitH&navpanes=0&scrollbar=0&toolbar=0"*/}
+
+                {/*        className="w-full h-full rounded-lg border-2 border-slate-300"*/}
+                {/*        title="Documentación TFG - Dexter"*/}
+                {/*        frameBorder="0"*/}
+                {/*        allowFullScreen*/}
+                {/*        allow="fullscreen"*/}
+                {/*    />*/}
+                {/*</div>*/}
             </main>
 
             <Footer

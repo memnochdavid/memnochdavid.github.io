@@ -7,7 +7,7 @@ import Item from "../components/Item.jsx";
 export default function Home() {
     return (
         <div className="min-h-screen bg-stone-100">
-            <Header textLogo1="Mi" textLogo2="Portfolio" color1= "white" color2="indigo" />
+            <Header textLogo1="My" textLogo2="Portfolio" color1= "white" color2="indigo" />
 
             <main className="py-8 min-h-[92vh] flex flex-col justify-start gap-8 items-center w-full">
 
@@ -103,7 +103,7 @@ export default function Home() {
                 <section className= "flex flex-col px-6 md:px-15 justify-start items-start gap-5
                     w-full">
                     <Separator text = "Language Skills" color = "indigo" />
-                    <div className="flex flex-col md:flex-row w-full md:columns-2 items-start md:items-center gap-8 md:gap-15 justify-start px-4 md:px-10">
+                    <div className="flex flex-col md:flex-row w-full md:columns-2 align-start md:items-start gap-8 md:gap-15 justify-start px-4 md:px-10">
                         <div>
                             <p className="text-xl font-bold text-gray-900">Mother Languages</p>
                             <div className="flex pt-3 gap-3">
