@@ -59,13 +59,47 @@ export default function App() {
                 <section className= "flex flex-col px-15 justify-start items-start gap-5
                     w-full">
                     <Separator text = "Work experience" color = "indigo" />
+                    <div className="flex flex-col items-start gap-3 px-10">
+                        <p className="text-xl font-bold text-gray-900">Tutor</p>
+                        <p>Colegio Jabalcón</p>
+                        <p>IT Instructor ("Introduction to Computing")</p>
+                        <p>01/09/2009 - 05/06/2010</p>
+                        <p>Baza, Spain</p>
+                    </div>
 
+                    <div className="flex flex-col items-start gap-3 px-10">
+                        <p className="text-xl font-bold text-gray-900">Private tutor</p>
+                        <p>01/09/2013 - 31/12/2016</p>
+                        <p>Provided private English lessons for three years.</p>
+                        <p>Baza, Spain</p>
+                    </div>
+
+                    <div className="flex flex-col items-start gap-3 px-10">
+                        <p className="text-xl font-bold text-gray-900">Taxi driver</p>
+                        <p>01/10/2017 - 25/12/2019</p>
+                        <p>Owner of my own taxi business.</p>
+                        <p>Baza, Spain</p>
+                    </div>
+
+                    <div className="flex flex-col items-start gap-3 px-10">
+                        <p className="text-xl font-bold text-gray-900">Operator - COSENTINO</p>
+                        <p>16/07/2021 - 16/07/2023</p>
+                        <p>Responsible for a production line</p>
+                        <p>SAP use</p>
+                        <p>Almería, Spain</p>
+                    </div>
                 </section>
 
                 <section className= "flex flex-col px-15 justify-start items-start gap-5
                     w-full">
                     <Separator text = "Language Skills" color = "indigo" />
-
+                    <div className="flex flex-col items-start gap-3 px-10">
+                        <p className="text-xl font-bold text-gray-900">Mother Languages</p>
+                        <p>Spanish</p>
+                        <p>Catalan</p>
+                        <p className="text-xl font-bold text-gray-900">Other</p>
+                        <p>English</p>
+                    </div>
                 </section>
 
                 <section className= "flex flex-col px-15 justify-start items-start gap-5
