@@ -98,7 +98,7 @@ export default function Tfg() {
 
                 {/*<div className="w-full md:w-[50vw] h-[80vh]">*/}
                 {/*    <iframe*/}
-                {/*        src="/resources/Docu Dexter.pdf#view=FitH&navpanes=0&scrollbar=0&toolbar=0"*/}
+                {/*        src="resources/Docu Dexter.pdf#view=FitH&navpanes=0&scrollbar=0&toolbar=0"*/}
 
                 {/*        className="w-full h-full rounded-lg border-2 border-slate-300"*/}
                 {/*        title="Documentación TFG - Dexter"*/}

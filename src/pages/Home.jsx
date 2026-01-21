@@ -13,7 +13,7 @@ export default function Home() {
 
                 <section className="text-center flex flex-col md:flex-row gap-6 md:gap-2 justify-between items-center bg-sky-700/50
                     w-full pt-25 pb-10 px-6 md:px-15 border-b border-slate-950 shadow-[0_10px_10px_rgba(0,0,0,0.5)]">
-                    <Profile avatarUrl={"../public/img/avatar.jpg"}/>
+                    <Profile avatarUrl={"img/avatar.jpg"}/>
                     <div className= "flex flex-col justify-center items-center gap-5">
 
                         <a className="text-xl underline font-bold text-gray-900" href="mailto:davduquediaz@gmail.com">davduquediaz@gmail.com</a>
@@ -109,13 +109,13 @@ export default function Home() {
                             <div className="flex pt-3 gap-3">
                                 <Item
                                     text= "Spanish"
-                                    urlImgFlag= "../public/img/flag-spain.svg"
+                                    urlImgFlag= "img/flag-spain.svg"
                                     color= "indigo"
                                     principal= "false"
                                 />
                                 <Item
                                     text= "Catalan"
-                                    urlImgFlag= "../public/img/flag-catalonia.svg"
+                                    urlImgFlag= "img/flag-catalonia.svg"
                                     color= "indigo"
                                     principal= "false"
                                 />
@@ -126,7 +126,7 @@ export default function Home() {
                             <div className="flex gap-3 pt-3">
                                 <Item
                                     text= "English"
-                                    urlImgFlag= "../public/img/flag-uk.png"
+                                    urlImgFlag= "img/flag-uk.png"
                                     color= "indigo"
                                     bgColor ="white"
                                     principal= "true"
@@ -142,109 +142,109 @@ export default function Home() {
                     <div className="flex flex-wrap w-full gap-4 md:gap-8 items-center justify-center md:justify-start px-4 md:px-10">
                         <Item
                             text= "Android"
-                            urlImgFlag= "../public/img/icon-android.svg"
+                            urlImgFlag= "img/icon-android.svg"
                             color= "indigo"
                             principal= "false"
                         />
                         <Item
                             text= "Kotlin"
-                            urlImgFlag= "../public/img/icon-kotlin.svg"
+                            urlImgFlag= "img/icon-kotlin.svg"
                             color= "indigo"
                             principal= "false"
                         />
                         <Item
                             text= "Firebase"
-                            urlImgFlag= "../public/img/icon-firebase.svg"
+                            urlImgFlag= "img/icon-firebase.svg"
                             color= "indigo"
                             principal= "false"
                         />
                         <Item
                             text= "Jetpack Compose"
-                            urlImgFlag= "../public/img/icon-jpcompose.svg"
+                            urlImgFlag= "img/icon-jpcompose.svg"
                             color= "indigo"
                             principal= "false"
                         />
                         <Item
                             text= "Material UI"
-                            urlImgFlag= "../public/img/icon-materialui.svg"
+                            urlImgFlag= "img/icon-materialui.svg"
                             color= "indigo"
                             principal= "false"
                         />
                         <Item
                             text= "HTML5"
-                            urlImgFlag= "../public/img/icon-html.png"
+                            urlImgFlag= "img/icon-html.png"
                             color= "indigo"
                             principal= "false"
                         />
                         <Item
                             text= "CSS3"
-                            urlImgFlag= "../public/img/icon-css.svg"
+                            urlImgFlag= "img/icon-css.svg"
                             color= "indigo"
                             principal= "false"
                         />
                         <Item
                             text= "JavaScript"
-                            urlImgFlag= "../public/img/icon-js.svg"
+                            urlImgFlag= "img/icon-js.svg"
                             color= "indigo"
                             principal= "false"
                         />
                         <Item
                             text= "React"
-                            urlImgFlag= "../public/img/icon-react.svg"
+                            urlImgFlag= "img/icon-react.svg"
                             color= "indigo"
                             principal= "false"
                         />
                         <Item
                             text= "Tailwind"
-                            urlImgFlag= "../public/img/icon-tailwind.svg"
+                            urlImgFlag= "img/icon-tailwind.svg"
                             color= "indigo"
                             principal= "false"
                         />
                         <Item
                             text= "Bootstrap"
-                            urlImgFlag= "../public/img/icon-bootstrap.svg"
+                            urlImgFlag= "img/icon-bootstrap.svg"
                             color= "indigo"
                             principal= "false"
                         />
                         <Item
                             text= "Node.js"
-                            urlImgFlag= "../public/img/icon-nodejs.svg"
+                            urlImgFlag= "img/icon-nodejs.svg"
                             color= "indigo"
                             principal= "false"
                         />
                         <Item
                             text= "PHP"
-                            urlImgFlag= "../public/img/icon-php.svg"
+                            urlImgFlag= "img/icon-php.svg"
                             color= "indigo"
                             principal= "false"
                         />
                         <Item
                             text= "MariaDB"
-                            urlImgFlag= "../public/img/icon-mariadb.svg"
+                            urlImgFlag= "img/icon-mariadb.svg"
                             color= "indigo"
                             principal= "false"
                         />
                         <Item
                             text= "PostgreSQL"
-                            urlImgFlag= "../public/img/icon-postgre.svg"
+                            urlImgFlag= "img/icon-postgre.svg"
                             color= "indigo"
                             principal= "false"
                         />
                         <Item
                             text= "Symfony"
-                            urlImgFlag= "../public/img/icon-symfony.svg"
+                            urlImgFlag= "img/icon-symfony.svg"
                             color= "indigo"
                             principal= "false"
                         />
                         <Item
                             text= "Java & Java8"
-                            urlImgFlag= "../public/img/icon-java.svg"
+                            urlImgFlag= "img/icon-java.svg"
                             color= "indigo"
                             principal= "false"
                         />
                         <Item
                             text= "Jakarta"
-                            urlImgFlag= "../public/img/icon-jakarta.svg"
+                            urlImgFlag= "img/icon-jakarta.svg"
                             color= "indigo"
                             principal= "false"
                         />
