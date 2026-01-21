@@ -12,7 +12,7 @@ export default function Home() {
             <main className="py-8 min-h-[92vh] flex flex-col justify-start gap-8 items-center w-full">
 
                 <section className="text-center flex flex-col md:flex-row gap-6 md:gap-2 justify-between items-center bg-sky-700/50
-                    w-full pt-25 pb-10 px-6 md:px-15 border-b border-slate-950 shadow-[0_10px_10px_rgba(0,0,0,0.5)]">
+                    w-full pt-25 pb-10 px-6 md:px-15 md:justify-start border-b border-slate-950 shadow-[0_10px_10px_rgba(0,0,0,0.5)]">
                     <Profile avatarUrl={"img/avatar.jpg"}/>
                     <div className= "flex flex-col justify-center items-center gap-5">
 
@@ -140,7 +140,7 @@ export default function Home() {
                 <section className= "flex flex-col px-6 md:px-15 justify-start items-start gap-5
                     w-full">
                     <Separator text = "Skills" color = "indigo" />
-                    <div className="flex flex-wrap w-full gap-4 md:gap-8 items-center justify-start px-4 md:px-10">
+                    <div className="flex flex-wrap w-full gap-4 md:gap-5 md:columns-3 items-center justify-start px-4 md:px-10">
                         <Item
                             text= "Android"
                             urlImgFlag= "img/icon-android.svg"
