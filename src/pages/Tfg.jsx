@@ -6,7 +6,7 @@ export default function Tfg() {
         <div className="min-h-screen bg-stone-100">
             <Header textLogo1="My" textLogo2="Portfolio" color1= "white" color2="indigo" />
 
-            <main className="flex flex-col md:flex-row justify-between items-center w-full pt-17">
+            <main className="flex flex-col md:flex-row justify-between items-center w-full pt-20">
 
                 <div className="bg-gray-900 w-full md:w-[70vw] h-[80vh]
                 scroll-smooth overflow-auto
