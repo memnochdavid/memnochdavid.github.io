@@ -6,15 +6,15 @@ export default function Tfg() {
         <div className="min-h-screen bg-stone-100">
             <Header textLogo1="My" textLogo2="Portfolio" color1= "white" color2="indigo" />
 
-            <main className="flex flex-col md:flex-row justify-between items-center w-full pt-[8vh]">
+            <main className="flex justify-center items-center w-full pt-[8vh] bg-gray-950">
 
-                <div className="bg-gray-900 w-full md:w-[70vw] h-[80vh]
+                <div className="bg-gray-900 w-full md:w-[95vw] max-w-7xl h-[80vh]
                 scroll-smooth overflow-auto
                 [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-track]:bg-transparent
                 [&::-webkit-scrollbar-thumb]:bg-red-400
-
                 [&::-webkit-scrollbar-thumb]:rounded-full">
-                    <div className="max-w-4xl mx-auto bg-gray-800 text-white rounded-xl shadow-2xl overflow-hidden">
+                    
+                    <div className="max-w-10xl mx-auto bg-gray-800 text-white rounded-xl shadow-2xl overflow-hidden my-8">
 
                         <header className="p-6 bg-red-600">
                             <h1 className="text-3xl font-extrabold text-center">Project Dexter: Visión General</h1>
@@ -22,6 +22,21 @@ export default function Tfg() {
                         </header>
 
                         <main className="p-8 space-y-10">
+
+                            {/* SECCIÓN DE VIDEO DEMO INTEGRADA */}
+                            <section className="bg-gray-700 p-6 rounded-lg shadow-inner">
+                                <h2 className="text-2xl font-bold border-b border-red-500 pb-2 mb-4 text-red-400">Video Demo</h2>
+                                <div className="aspect-video w-full">
+                                    <iframe
+                                        src="https://www.youtube.com/embed/E4Q2EPS4j3s"
+                                        className="w-full h-full rounded-lg border-2 border-slate-500"
+                                        title="Video Demo TFG - Dexter"
+                                        frameBorder="0"
+                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                        allowFullScreen
+                                    />
+                                </div>
+                            </section>
 
                             <section className="bg-gray-700 p-6 rounded-lg shadow-inner">
                                 <h2 className="text-2xl font-bold border-b border-red-500 pb-2 mb-4 text-red-400">Funcionalidades Principales</h2>
@@ -84,29 +99,6 @@ export default function Tfg() {
                         </footer>
                     </div>
                 </div>
-
-                <div className="w-full md:w-[30vw] h-[80vh]">
-                    <iframe
-                        src="https://www.youtube.com/embed/E4Q2EPS4j3s"
-                        className="w-full h-full rounded-lg border-2 border-slate-300"
-                        title="Video Demo TFG - Dexter"
-                        frameBorder="0"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                        allowFullScreen
-                    />
-                </div>
-
-                {/*<div className="w-full md:w-[50vw] h-[80vh]">*/}
-                {/*    <iframe*/}
-                {/*        src="resources/Docu Dexter.pdf#view=FitH&navpanes=0&scrollbar=0&toolbar=0"*/}
-
-                {/*        className="w-full h-full rounded-lg border-2 border-slate-300"*/}
-                {/*        title="Documentación TFG - Dexter"*/}
-                {/*        frameBorder="0"*/}
-                {/*        allowFullScreen*/}
-                {/*        allow="fullscreen"*/}
-                {/*    />*/}
-                {/*</div>*/}
             </main>
 
             <Footer
