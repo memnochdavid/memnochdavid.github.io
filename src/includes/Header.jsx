@@ -40,7 +40,7 @@ function Header({ textLogo1, textLogo2, color1 = "white", color2 = "indigo" }) {
       </div>
 
       <nav className="flex gap-2">
-        <Boton texto={t('header.tfg')} url="#/tfg" color="indigo" />
+        <Boton texto={t('header.projects')} url="#/projects" color="indigo" />
         <Boton texto={t('header.cv')} url="resources/CV - David Duque Díaz.pdf" color="indigo" principal={true} download="CV - David Duque Díaz.pdf" />
       </nav>
     </header>

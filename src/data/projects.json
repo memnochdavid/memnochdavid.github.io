@@ -1,0 +1,46 @@
+[
+  {
+    "id": "loggex",
+    "titleKey": "projects.loggex.title",
+    "subtitleKey": "projects.loggex.subtitle",
+    "tfg": "DAW",
+    "year": 2026,
+    "descriptionKey": "projects.loggex.description",
+    "highlightsKey": "projects.loggex.highlights",
+    "modulesKey": "projects.loggex.modules",
+    "stack": [
+      { "name": "Symfony", "icon": "img/icon-symfony.svg" },
+      { "name": "React", "icon": "img/icon-react.svg" },
+      { "name": "PHP", "icon": "img/icon-php.svg" },
+      { "name": "MariaDB", "icon": "img/icon-mariadb.svg" },
+      { "name": "Tailwind", "icon": "img/icon-tailwind.svg" },
+      { "name": "Vite", "icon": "img/icon-vite.svg" },
+      { "name": "JavaScript", "icon": "img/icon-js.svg" },
+      { "name": "Node.js", "icon": "img/icon-nodejs.svg" }
+    ],
+    "logoUrl": "img/logo-loggex.png",
+    "videoUrl": "",
+    "repoUrl": "",
+    "color": "sky"
+  },
+  {
+    "id": "dexter",
+    "titleKey": "projects.dexter.title",
+    "subtitleKey": "projects.dexter.subtitle",
+    "tfg": "DAM",
+    "year": 2025,
+    "descriptionKey": "projects.dexter.description",
+    "highlightsKey": "projects.dexter.highlights",
+    "stack": [
+      { "name": "Kotlin", "icon": "img/icon-kotlin.svg" },
+      { "name": "Jetpack Compose", "icon": "img/icon-jpcompose.svg" },
+      { "name": "Firebase", "icon": "img/icon-firebase.svg" },
+      { "name": "Android", "icon": "img/icon-android.svg" },
+      { "name": "Material UI", "icon": "img/icon-materialui.svg" }
+    ],
+    "logoUrl": "img/logo-dexter.png",
+    "videoUrl": "https://www.youtube.com/embed/E4Q2EPS4j3s",
+    "repoUrl": "",
+    "color": "red"
+  }
+]

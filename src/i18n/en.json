@@ -2,7 +2,7 @@
   "header": {
     "logo1": "My",
     "logo2": "Portfolio",
-    "tfg": "TFG - DAM",
+    "projects": "Projects",
     "cv": "Download CV"
   },
   "profile": {
@@ -66,6 +66,22 @@
     "spanish": "Spanish",
     "catalan": "Catalan",
     "english": "English"
+  },
+  "projects": {
+    "pageTitle": "Projects",
+    "loggex": {
+      "title": "Loggex",
+      "subtitle": "Academic Management Platform",
+      "description": "A comprehensive educational management system that centralizes school administration, scheduling, attendance, assignments and grading. Built with Symfony 8 + React 19, deployed with Docker and S3 storage.",
+      "highlights": "33 entities · 11 functional modules · 5 languages · Real-time with Mercure SSE · Drag-and-drop schedule editor · Official BOE catalog (230 itineraries, ~2,230 subjects) · PDF export · Roles: Superadmin, Admin, Teacher, Student",
+      "modules": "Center · Academic structure · People & enrollment · Scheduling & planning · Attendance · Tasks & assignments · Grading · Syllabi · Communication · Schedule incidents · Official catalog"
+    },
+    "dexter": {
+      "title": "Project Dexter",
+      "subtitle": "Pokémon Trainer App",
+      "description": "Native Android app featuring a complete Pokédex with advanced search engine, team planner, real-time messaging and Pokémon news aggregator.",
+      "highlights": "Full Pokédex · Multi-criteria filtering · Team planner · Messaging & forums · News aggregator · Roles & permissions · Kotlin + Jetpack Compose · Firebase"
+    }
   },
   "footer": {
     "cta1": "LET'S BUILD",

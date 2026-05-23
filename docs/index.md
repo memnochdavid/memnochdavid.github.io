@@ -25,7 +25,7 @@ Para retomar el trabajo, simplemente pide que examine este `index.md`.
 | 6  | SEO, metadatos y rendimiento     | PENDIENTE    |
 | 7  | Automatización CI/CD             | PENDIENTE    |
 | 8  | Limpieza y organización del repo | PENDIENTE    |
-| 9  | Vista de Proyectos (TFG + Loggex)| PENDIENTE    |
+| 9  | Vista de Proyectos (TFG + Loggex)| EN_PROGRESO  |
 
 ---
 
@@ -193,22 +193,27 @@ Para retomar el trabajo, simplemente pide que examine este `index.md`.
 | **Loggex** | DAW | 2026 | Plataforma integral de gestión académica para centros educativos. Symfony 8 + React 19, Docker, MinIO, Mercure SSE, 33 entidades, 5 idiomas. |
 | **Dexter** | DAM | 2025 | App Pokémon Pokedex nativa en Kotlin + Jetpack Compose con Firebase. |
 
-**Ideas de layout:**
-- [ ] Diseñar una vista tipo "proyectos" con tarjetas o secciones individuales
-- [ ] Cada proyecto con: título, descripción, tech stack (iconos reutilizando `<Item>` o similares), capturas/imágenes, enlace al repo de GitHub, video demo si existe
-- [ ] Loggex al ser backend+frontend complejo → sección técnica expandible (arquitectura, módulos, stack)
-- [ ] Dexter como proyecto más acotado → ficha compacta
+**Implementado:**
+- [x] Vista con tabs (Loggex | Dexter) que cambian el proyecto activo
+- [x] `ProjectCard` reutilizable con header, descripción, stack, highlights, módulos, video, logo
+- [x] Logos de cada proyecto en el header (`public/img/logo-loggex.png`, `public/img/logo-dexter.png`)
+- [x] `src/data/projects.json` con datos externalizados
+- [x] Claves i18n en `es.json`, `en.json`, `ca.json`
+- [x] Ruta `/#/projects` en `App.jsx` + enlace en `Header.jsx`
+
+**Pendiente:**
+- [ ] Capturas/screenshots de cada proyecto
+- [ ] Enlaces a repos de GitHub en `projects.json`
 
 **Archivos afectados:**
-- `src/pages/Tfg.jsx` → reemplazar o renombrar a `Projects.jsx`
-- `src/App.jsx` → actualizar ruta
-- `src/includes/Header.jsx` → actualizar enlace
-- `src/data/` → posible JSON de proyectos
-- `src/i18n/*.json` → textos de los proyectos
+- `src/pages/Tfg.jsx` → reemplazado por `Projects.jsx`
+- `src/App.jsx` → ruta `/tfg` → `/projects`
+- `src/includes/Header.jsx` → enlace actualizado
+- `src/data/projects.json` → datos de proyectos
+- `src/i18n/*.json` → textos de proyectos
+- `public/img/` → logos de Loggex y Dexter
 
 **Criterios de aceptación:**
-- La vista funciona en GitHub Pages sin backend
-- Cualquier proyecto se puede añadir/editar desde JSON + i18n
-- El Dexter actual se mantiene como segundo proyecto (no se pierde)
-
-**Nota:** Diseño queda abierto — el usuario decidirá en el futuro cómo quiere mostrarlo visualmente.
+- ✅ La vista funciona en GitHub Pages sin backend
+- ✅ Cualquier proyecto se puede añadir/editar desde JSON + i18n
+- ✅ El Dexter actual se mantiene como segundo proyecto (no se pierde)
