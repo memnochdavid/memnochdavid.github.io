@@ -25,7 +25,7 @@ Para retomar el trabajo, simplemente pide que examine este `index.md`.
 | 6  | SEO, metadatos y rendimiento     | PENDIENTE    |
 | 7  | Automatización CI/CD             | PENDIENTE    |
 | 8  | Limpieza y organización del repo | PENDIENTE    |
-| 9  | Vista de Proyectos (TFG + Loggex)| EN_PROGRESO  |
+| 9  | Vista de Proyectos (TFG + Loggex)| COMPLETADO   |
 
 ---
 
@@ -194,15 +194,17 @@ Para retomar el trabajo, simplemente pide que examine este `index.md`.
 | **Dexter** | DAM | 2025 | App Pokémon Pokedex nativa en Kotlin + Jetpack Compose con Firebase. |
 
 **Implementado:**
-- [x] Vista con tabs (Loggex | Dexter) que cambian el proyecto activo
+- [x] Vista con card grid + detalle a pantalla completa
 - [x] `ProjectCard` reutilizable con header, descripción, stack, highlights, módulos, video, logo
 - [x] Logos de cada proyecto en el header (`public/img/logo-loggex.png`, `public/img/logo-dexter.png`)
 - [x] `src/data/projects.json` con datos externalizados
 - [x] Claves i18n en `es.json`, `en.json`, `ca.json`
 - [x] Ruta `/#/projects` en `App.jsx` + enlace en `Header.jsx`
+- [x] `ImageShowcase` con crossfade (transición de opacidad) tipo olearia.io
+- [x] Dots interactivos debajo de la imagen
 
 **Pendiente:**
-- [ ] Capturas/screenshots de cada proyecto
+- [ ] Capturas/screenshots reales de cada proyecto
 - [ ] Enlaces a repos de GitHub en `projects.json`
 
 **Archivos afectados:**
@@ -217,3 +219,4 @@ Para retomar el trabajo, simplemente pide que examine este `index.md`.
 - ✅ La vista funciona en GitHub Pages sin backend
 - ✅ Cualquier proyecto se puede añadir/editar desde JSON + i18n
 - ✅ El Dexter actual se mantiene como segundo proyecto (no se pierde)
+- ✅ Imágenes con crossfade (no carrusel deslizante) controladas por dots
