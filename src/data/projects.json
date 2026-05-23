@@ -21,7 +21,12 @@
     "logoUrl": "img/logo-loggex.png",
     "videoUrl": "",
     "repoUrl": "",
-    "color": "sky"
+    "color": "sky",
+    "screenshots": [
+      "img/projects/placeholder.webp",
+      "img/projects/placeholder2.webp",
+      "img/projects/placeholder3.webp"
+    ]
   },
   {
     "id": "dexter",
@@ -41,6 +46,11 @@
     "logoUrl": "img/logo-dexter.png",
     "videoUrl": "https://www.youtube.com/embed/E4Q2EPS4j3s",
     "repoUrl": "",
-    "color": "red"
+    "color": "red",
+    "screenshots": [
+      "img/projects/placeholder.webp",
+      "img/projects/placeholder2.webp",
+      "img/projects/placeholder3.webp"
+    ]
   }
 ]
