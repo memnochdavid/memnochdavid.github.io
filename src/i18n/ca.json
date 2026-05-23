@@ -1,0 +1,75 @@
+{
+  "header": {
+    "logo1": "El meu",
+    "logo2": "Portfolio",
+    "tfg": "TFG - DAM",
+    "cv": "Descarregar CV"
+  },
+  "profile": {
+    "name": "David Duque Díaz",
+    "title": "Full-Stack Developer"
+  },
+  "sections": {
+    "education": "Formació",
+    "experience": "Experiència laboral",
+    "languages": "Idiomes",
+    "skills": "Habilitats"
+  },
+  "education": [
+    {
+      "title": "Tècnic en Operació de Sistemes Informàtics",
+      "center": "Academia Universo",
+      "level": "Nivell EQF 3"
+    },
+    {
+      "title": "Tècnic en Administració de Sistemes Informàtics en Xarxa",
+      "center": "IES Pedro Jiménez Montoya",
+      "level": "Nivell EQF 5"
+    },
+    {
+      "title": "Tècnic Superior en Desenvolupament d'Aplicacions Multiplataforma",
+      "center": "Escuela Arte Granada",
+      "level": "Nivell EQF 5"
+    },
+    {
+      "title": "Tècnic Superior en Desenvolupament d'Aplicacions Web",
+      "center": "Escuela Arte Granada",
+      "level": "Nivell EQF 5"
+    }
+  ],
+  "experience": [
+    {
+      "title": "Tutor",
+      "company": "Colegio Jabalcón",
+      "description": "Instructor d'informàtica (\"Introducció a la Informàtica\")"
+    },
+    {
+      "title": "Professor particular",
+      "company": "",
+      "description": "Classes particulars d'anglès durant tres anys."
+    },
+    {
+      "title": "Taxista",
+      "company": "",
+      "description": "Propietari del meu propi negoci de taxi."
+    },
+    {
+      "title": "Operari - COSENTINO",
+      "company": "",
+      "description": "Responsable d'una línia de producció",
+      "extras": ["Ús de SAP"]
+    }
+  ],
+  "languages": {
+    "mother": "Llengües maternes",
+    "proficient": "Nivell avançat",
+    "spanish": "Castellà",
+    "catalan": "Català",
+    "english": "Anglès"
+  },
+  "footer": {
+    "cta1": "CONSTRUÏM",
+    "cta2": "ALGUNA COSA NOVA",
+    "copyright": "© 2026 DAVID DUQUE DÍAZ — PORTFOLI"
+  }
+}

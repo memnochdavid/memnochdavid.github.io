@@ -17,14 +17,15 @@ Para retomar el trabajo, simplemente pide que examine este `index.md`.
 
 | #  | Roadmap                          | Estado       |
 |----|----------------------------------|--------------|
-| 1  | Externalización de datos         | PENDIENTE    |
+| 1  | Externalización de datos         | COMPLETADO   |
 | 2  | Gestión de contenido (CMS-free)  | PENDIENTE    |
-| 3  | Internacionalización (i18n)      | PENDIENTE    |
+| 3  | Internacionalización (i18n)      | COMPLETADO   |
 | 4  | Refactor de componentes          | PENDIENTE    |
 | 5  | Mejoras de UI/UX y animaciones   | PENDIENTE    |
 | 6  | SEO, metadatos y rendimiento     | PENDIENTE    |
 | 7  | Automatización CI/CD             | PENDIENTE    |
 | 8  | Limpieza y organización del repo | PENDIENTE    |
+| 9  | Vista de Proyectos (TFG + Loggex)| PENDIENTE    |
 
 ---
 
@@ -77,10 +78,13 @@ Para retomar el trabajo, simplemente pide que examine este `index.md`.
 - Todos los componentes con texto visible
 
 **Tareas:**
-- [ ] Investigar si usar `react-i18next` o una solución ligera custom con Context
-- [ ] Crear archivos de traducción: `es.json`, `en.json`, `ca.json`
-- [ ] Implementar selector de idioma en el Header
-- [ ] Migrar textos hardcodeados en componentes a claves de i18n
+- [x] Decidir solución: Context ligero propio (sin dependencias externas)
+- [x] Crear `src/i18n/context.jsx` con `LocaleProvider`, `useLocale()` y función `t()`
+- [x] Crear archivos de traducción: `es.json`, `en.json`, `ca.json`
+- [x] Crear `src/data/` con JSONs externos (profile, education, experience, languages, skills)
+- [x] Implementar selector de idioma en el Header (botones ES/EN/CA)
+- [x] Migrar textos hardcodeados de Home.jsx a claves i18n
+- [x] Adaptar Header, Footer y componentes para resolver claves con `t()`
 
 **Criterios de aceptación:**
 - El portfolio se muestra completo en ES, EN y CA
@@ -175,3 +179,36 @@ Para retomar el trabajo, simplemente pide que examine este `index.md`.
 **Criterios de aceptación:**
 - El repo está limpio (solo archivos necesarios versionados)
 - `git status` muestra solo lo esperado
+
+---
+
+## Roadmap 9: Vista de Proyectos (TFG + Loggex)
+
+**Objetivo:** Reemplazar la actual página `Tfg.jsx` (Dexter Pokedex, TFG DAM 2025) por una vista `/projects` que muestre ambos proyectos reales del autor, con presentación visual rica y sin backend.
+
+**Proyectos a incluir:**
+
+| Proyecto  | TFG | Año | Descripción |
+|-----------|-----|-----|-------------|
+| **Loggex** | DAW | 2026 | Plataforma integral de gestión académica para centros educativos. Symfony 8 + React 19, Docker, MinIO, Mercure SSE, 33 entidades, 5 idiomas. |
+| **Dexter** | DAM | 2025 | App Pokémon Pokedex nativa en Kotlin + Jetpack Compose con Firebase. |
+
+**Ideas de layout:**
+- [ ] Diseñar una vista tipo "proyectos" con tarjetas o secciones individuales
+- [ ] Cada proyecto con: título, descripción, tech stack (iconos reutilizando `<Item>` o similares), capturas/imágenes, enlace al repo de GitHub, video demo si existe
+- [ ] Loggex al ser backend+frontend complejo → sección técnica expandible (arquitectura, módulos, stack)
+- [ ] Dexter como proyecto más acotado → ficha compacta
+
+**Archivos afectados:**
+- `src/pages/Tfg.jsx` → reemplazar o renombrar a `Projects.jsx`
+- `src/App.jsx` → actualizar ruta
+- `src/includes/Header.jsx` → actualizar enlace
+- `src/data/` → posible JSON de proyectos
+- `src/i18n/*.json` → textos de los proyectos
+
+**Criterios de aceptación:**
+- La vista funciona en GitHub Pages sin backend
+- Cualquier proyecto se puede añadir/editar desde JSON + i18n
+- El Dexter actual se mantiene como segundo proyecto (no se pierde)
+
+**Nota:** Diseño queda abierto — el usuario decidirá en el futuro cómo quiere mostrarlo visualmente.

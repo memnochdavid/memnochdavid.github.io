@@ -1,0 +1,38 @@
+[
+  {
+    "id": 1,
+    "titleKey": "experience.0.title",
+    "companyKey": "experience.0.company",
+    "descriptionKey": "experience.0.description",
+    "startDate": "01/09/2009",
+    "endDate": "05/06/2010",
+    "location": "Baza, Spain"
+  },
+  {
+    "id": 2,
+    "titleKey": "experience.1.title",
+    "companyKey": "experience.1.company",
+    "descriptionKey": "experience.1.description",
+    "startDate": "01/09/2013",
+    "endDate": "31/12/2016",
+    "location": "Baza, Spain"
+  },
+  {
+    "id": 3,
+    "titleKey": "experience.2.title",
+    "companyKey": "experience.2.company",
+    "descriptionKey": "experience.2.description",
+    "startDate": "01/10/2017",
+    "endDate": "25/12/2019",
+    "location": "Baza, Spain"
+  },
+  {
+    "id": 4,
+    "titleKey": "experience.3.title",
+    "companyKey": "experience.3.company",
+    "descriptionKey": "experience.3.description",
+    "startDate": "16/07/2021",
+    "endDate": "16/07/2023",
+    "location": "Almería, Spain"
+  }
+]

@@ -1,0 +1,75 @@
+{
+  "header": {
+    "logo1": "My",
+    "logo2": "Portfolio",
+    "tfg": "TFG - DAM",
+    "cv": "Download CV"
+  },
+  "profile": {
+    "name": "David Duque Díaz",
+    "title": "Full-Stack Developer"
+  },
+  "sections": {
+    "education": "Education & Training",
+    "experience": "Work experience",
+    "languages": "Language Skills",
+    "skills": "Skills"
+  },
+  "education": [
+    {
+      "title": "Technician in Computer Systems Operation",
+      "center": "Academia Universo",
+      "level": "Level in EQF 3"
+    },
+    {
+      "title": "Technician in Networked Computer Systems Administration",
+      "center": "IES Pedro Jiménez Montoya",
+      "level": "Level in EQF 5"
+    },
+    {
+      "title": "Higher National Diploma, Cross-Platform Application Development",
+      "center": "Escuela Arte Granada",
+      "level": "Level in EQF 5"
+    },
+    {
+      "title": "Higher National Diploma, Web Application Development",
+      "center": "Escuela Arte Granada",
+      "level": "Level in EQF 5"
+    }
+  ],
+  "experience": [
+    {
+      "title": "Tutor",
+      "company": "Colegio Jabalcón",
+      "description": "IT Instructor (\"Introduction to Computing\")"
+    },
+    {
+      "title": "Private tutor",
+      "company": "",
+      "description": "Provided private English lessons for three years."
+    },
+    {
+      "title": "Taxi driver",
+      "company": "",
+      "description": "Owner of my own taxi business."
+    },
+    {
+      "title": "Operator - COSENTINO",
+      "company": "",
+      "description": "Responsible for a production line",
+      "extras": ["SAP use"]
+    }
+  ],
+  "languages": {
+    "mother": "Mother Languages",
+    "proficient": "Proficient",
+    "spanish": "Spanish",
+    "catalan": "Catalan",
+    "english": "English"
+  },
+  "footer": {
+    "cta1": "LET'S BUILD",
+    "cta2": "SOMETHING NEW",
+    "copyright": "© 2026 DAVID DUQUE DÍAZ -- PORTFOLIO"
+  }
+}

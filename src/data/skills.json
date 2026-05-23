@@ -1,0 +1,20 @@
+[
+  { "id": "android",   "name": "Android",       "urlImgFlag": "img/icon-android.svg" },
+  { "id": "kotlin",    "name": "Kotlin",        "urlImgFlag": "img/icon-kotlin.svg" },
+  { "id": "firebase",  "name": "Firebase",      "urlImgFlag": "img/icon-firebase.svg" },
+  { "id": "compose",   "name": "Jetpack Compose", "urlImgFlag": "img/icon-jpcompose.svg" },
+  { "id": "mui",       "name": "Material UI",   "urlImgFlag": "img/icon-materialui.svg" },
+  { "id": "html",      "name": "HTML5",         "urlImgFlag": "img/icon-html.png" },
+  { "id": "css",       "name": "CSS3",          "urlImgFlag": "img/icon-css.svg" },
+  { "id": "js",        "name": "JavaScript",    "urlImgFlag": "img/icon-js.svg" },
+  { "id": "react",     "name": "React",         "urlImgFlag": "img/icon-react.svg" },
+  { "id": "tailwind",  "name": "Tailwind",      "urlImgFlag": "img/icon-tailwind.svg" },
+  { "id": "bootstrap", "name": "Bootstrap",     "urlImgFlag": "img/icon-bootstrap.svg" },
+  { "id": "nodejs",    "name": "Node.js",       "urlImgFlag": "img/icon-nodejs.svg" },
+  { "id": "php",       "name": "PHP",           "urlImgFlag": "img/icon-php.svg" },
+  { "id": "mariadb",   "name": "MariaDB",       "urlImgFlag": "img/icon-mariadb.svg" },
+  { "id": "postgres",  "name": "PostgreSQL",    "urlImgFlag": "img/icon-postgre.svg" },
+  { "id": "symfony",   "name": "Symfony",       "urlImgFlag": "img/icon-symfony.png" },
+  { "id": "java",      "name": "Java & Java8",  "urlImgFlag": "img/icon-java.svg" },
+  { "id": "jakarta",   "name": "Jakarta",       "urlImgFlag": "img/icon-jakarta.svg" }
+]

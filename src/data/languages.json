@@ -1,0 +1,21 @@
+[
+  {
+    "id": "spanish",
+    "nameKey": "languages.spanish",
+    "urlImgFlag": "img/flag-spain.svg",
+    "categoryKey": "languages.mother"
+  },
+  {
+    "id": "catalan",
+    "nameKey": "languages.catalan",
+    "urlImgFlag": "img/flag-catalonia.svg",
+    "categoryKey": "languages.mother"
+  },
+  {
+    "id": "english",
+    "nameKey": "languages.english",
+    "urlImgFlag": "img/flag-uk.png",
+    "categoryKey": "languages.proficient",
+    "bgColor": "white"
+  }
+]

@@ -1,0 +1,75 @@
+{
+  "header": {
+    "logo1": "Mi",
+    "logo2": "Portfolio",
+    "tfg": "TFG - DAM",
+    "cv": "Descargar CV"
+  },
+  "profile": {
+    "name": "David Duque Díaz",
+    "title": "Full-Stack Developer"
+  },
+  "sections": {
+    "education": "Formación",
+    "experience": "Experiencia laboral",
+    "languages": "Idiomas",
+    "skills": "Habilidades"
+  },
+  "education": [
+    {
+      "title": "Técnico en Operación de Sistemas Informáticos",
+      "center": "Academia Universo",
+      "level": "Nivel EQF 3"
+    },
+    {
+      "title": "Técnico en Administración de Sistemas Informáticos en Red",
+      "center": "IES Pedro Jiménez Montoya",
+      "level": "Nivel EQF 5"
+    },
+    {
+      "title": "Técnico Superior en Desarrollo de Aplicaciones Multiplataforma",
+      "center": "Escuela Arte Granada",
+      "level": "Nivel EQF 5"
+    },
+    {
+      "title": "Técnico Superior en Desarrollo de Aplicaciones Web",
+      "center": "Escuela Arte Granada",
+      "level": "Nivel EQF 5"
+    }
+  ],
+  "experience": [
+    {
+      "title": "Tutor",
+      "company": "Colegio Jabalcón",
+      "description": "Instructor de informática (\"Introducción a la Informática\")"
+    },
+    {
+      "title": "Profesor particular",
+      "company": "",
+      "description": "Clases particulares de inglés durante tres años."
+    },
+    {
+      "title": "Taxista",
+      "company": "",
+      "description": "Propietario de mi propio negocio de taxi."
+    },
+    {
+      "title": "Operario - COSENTINO",
+      "company": "",
+      "description": "Responsable de una línea de producción",
+      "extras": ["Uso de SAP"]
+    }
+  ],
+  "languages": {
+    "mother": "Lenguas maternas",
+    "proficient": "Nivel avanzado",
+    "spanish": "Español",
+    "catalan": "Catalán",
+    "english": "Inglés"
+  },
+  "footer": {
+    "cta1": "CONSTRUYAMOS",
+    "cta2": "ALGO NUEVO",
+    "copyright": "© 2026 DAVID DUQUE DÍAZ — PORTFOLIO"
+  }
+}
