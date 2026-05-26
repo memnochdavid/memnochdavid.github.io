@@ -17,7 +17,8 @@ export function LocaleProvider({ children }) {
 
   const t = useCallback((key) => {
     if (!key) return '';
-    return key.split('.').reduce((obj, k) => obj?.[k], translations[locale]) || key;
+    const val = key.split('.').reduce((obj, k) => obj?.[k], translations[locale]);
+    return val ?? key;
   }, [locale]);
 
   return (

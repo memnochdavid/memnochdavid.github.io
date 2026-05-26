@@ -7,34 +7,41 @@
   },
   "profile": {
     "name": "David Duque Díaz",
-    "title": "Full-Stack Developer"
+    "title": "Full-Stack Developer",
+    "role": "Full Stack Developer"
   },
   "sections": {
     "education": "Education & Training",
     "experience": "Work experience",
     "languages": "Language Skills",
-    "skills": "Skills"
+    "skills": "Skills",
+    "eyebrow": {
+      "techStack": "Tech Stack",
+      "education": "Background",
+      "experience": "Career",
+      "languages": "Communication"
+    }
   },
   "education": [
     {
       "title": "Technician in Computer Systems Operation",
       "center": "Academia Universo",
-      "level": "Level in EQF 3"
+      "level": "Vocational Training"
     },
     {
       "title": "Technician in Networked Computer Systems Administration",
       "center": "IES Pedro Jiménez Montoya",
-      "level": "Level in EQF 5"
+      "level": "Higher Vocational Training"
     },
     {
       "title": "Higher National Diploma, Cross-Platform Application Development",
       "center": "Escuela Arte Granada",
-      "level": "Level in EQF 5"
+      "level": "Higher Vocational Training"
     },
     {
       "title": "Higher National Diploma, Web Application Development",
       "center": "Escuela Arte Granada",
-      "level": "Level in EQF 5"
+      "level": "Higher Vocational Training"
     }
   ],
   "experience": [
@@ -68,7 +75,18 @@
     "english": "English"
   },
   "projects": {
+    "eyebrow": "Portfolio",
     "pageTitle": "Projects",
+    "subtitle": "Final cycle projects in DAM and DAW — native and web development with modern technologies.",
+    "viewProject": "View project",
+    "back": "Back",
+    "labels": {
+      "description": "Description",
+      "highlights": "Highlights",
+      "stack": "Stack",
+      "modules": "Modules",
+      "viewOnGithub": "View on GitHub →"
+    },
     "loggex": {
       "title": "Loggex",
       "subtitle": "Academic Management Platform",
@@ -84,6 +102,7 @@
     }
   },
   "footer": {
+    "builtWith": "Built with",
     "cta1": "LET'S BUILD",
     "cta2": "SOMETHING NEW",
     "copyright": "© 2026 DAVID DUQUE DÍAZ -- PORTFOLIO"

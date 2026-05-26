@@ -7,34 +7,41 @@
   },
   "profile": {
     "name": "David Duque Díaz",
-    "title": "Full-Stack Developer"
+    "title": "Full-Stack Developer",
+    "role": "Full Stack Developer"
   },
   "sections": {
     "education": "Formació",
     "experience": "Experiència laboral",
     "languages": "Idiomes",
-    "skills": "Habilitats"
+    "skills": "Habilitats",
+    "eyebrow": {
+      "techStack": "Tech Stack",
+      "education": "Formació",
+      "experience": "Carrera",
+      "languages": "Comunicació"
+    }
   },
   "education": [
     {
       "title": "Tècnic en Operació de Sistemes Informàtics",
       "center": "Academia Universo",
-      "level": "Nivell EQF 3"
+      "level": "Grau Mitjà"
     },
     {
       "title": "Tècnic en Administració de Sistemes Informàtics en Xarxa",
       "center": "IES Pedro Jiménez Montoya",
-      "level": "Nivell EQF 5"
+      "level": "Grau Superior"
     },
     {
       "title": "Tècnic Superior en Desenvolupament d'Aplicacions Multiplataforma",
       "center": "Escuela Arte Granada",
-      "level": "Nivell EQF 5"
+      "level": "Grau Superior"
     },
     {
       "title": "Tècnic Superior en Desenvolupament d'Aplicacions Web",
       "center": "Escuela Arte Granada",
-      "level": "Nivell EQF 5"
+      "level": "Grau Superior"
     }
   ],
   "experience": [
@@ -68,7 +75,18 @@
     "english": "Anglès"
   },
   "projects": {
+    "eyebrow": "Portfoli",
     "pageTitle": "Projectes",
+    "subtitle": "Projectes finals de cicle en DAM i DAW — desenvolupament natiu i web amb tecnologies modernes.",
+    "viewProject": "Veure projecte",
+    "back": "Tornar",
+    "labels": {
+      "description": "Descripció",
+      "highlights": "Highlights",
+      "stack": "Stack",
+      "modules": "Mòduls",
+      "viewOnGithub": "Veure a GitHub →"
+    },
     "loggex": {
       "title": "Loggex",
       "subtitle": "Plataforma integral de gestió acadèmica",
@@ -84,6 +102,7 @@
     }
   },
   "footer": {
+    "builtWith": "Creat amb",
     "cta1": "CONSTRUÏM",
     "cta2": "ALGUNA COSA NOVA",
     "copyright": "© 2026 DAVID DUQUE DÍAZ — PORTFOLI"

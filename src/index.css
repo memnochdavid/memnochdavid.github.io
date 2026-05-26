@@ -1,6 +1,13 @@
 @import "tailwindcss";
 @source "./assets/safelist.txt";
 
+/* Class-based dark mode */
+@variant dark (&:where(.dark, .dark *));
+
+/* Hero gradient intensity per theme */
+:root        { --hero-glow: rgba(99, 102, 241, 0.07); }
+html.dark    { --hero-glow: rgba(99, 102, 241, 0.13); }
+
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(20px); }
   to   { opacity: 1; transform: translateY(0); }

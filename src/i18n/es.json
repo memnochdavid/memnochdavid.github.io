@@ -7,34 +7,41 @@
   },
   "profile": {
     "name": "David Duque Díaz",
-    "title": "Full-Stack Developer"
+    "title": "Full-Stack Developer",
+    "role": "Full Stack Developer"
   },
   "sections": {
     "education": "Formación",
     "experience": "Experiencia laboral",
     "languages": "Idiomas",
-    "skills": "Habilidades"
+    "skills": "Habilidades",
+    "eyebrow": {
+      "techStack": "Tech Stack",
+      "education": "Formación",
+      "experience": "Carrera",
+      "languages": "Comunicación"
+    }
   },
   "education": [
     {
-      "title": "Técnico en Operación de Sistemas Informáticos",
+      "title": "Técnico en Explotación de Sistemas Informáticos",
       "center": "Academia Universo",
-      "level": "Nivel EQF 3"
+      "level": "Grado Medio"
     },
     {
       "title": "Técnico en Administración de Sistemas Informáticos en Red",
       "center": "IES Pedro Jiménez Montoya",
-      "level": "Nivel EQF 5"
+      "level": "Grado Superior"
     },
     {
       "title": "Técnico Superior en Desarrollo de Aplicaciones Multiplataforma",
       "center": "Escuela Arte Granada",
-      "level": "Nivel EQF 5"
+      "level": "Grado Superior"
     },
     {
       "title": "Técnico Superior en Desarrollo de Aplicaciones Web",
       "center": "Escuela Arte Granada",
-      "level": "Nivel EQF 5"
+      "level": "Grado Superior"
     }
   ],
   "experience": [
@@ -68,7 +75,18 @@
     "english": "Inglés"
   },
   "projects": {
+    "eyebrow": "Portfolio",
     "pageTitle": "Proyectos",
+    "subtitle": "Proyectos fin de ciclo en DAM y DAW — desarrollo nativo y web con tecnologías modernas.",
+    "viewProject": "Ver proyecto",
+    "back": "Volver",
+    "labels": {
+      "description": "Descripción",
+      "highlights": "Highlights",
+      "stack": "Stack",
+      "modules": "Módulos",
+      "viewOnGithub": "Ver en GitHub →"
+    },
     "loggex": {
       "title": "Loggex",
       "subtitle": "Plataforma integral de gestión académica",
@@ -84,6 +102,7 @@
     }
   },
   "footer": {
+    "builtWith": "Creado con",
     "cta1": "CONSTRUYAMOS",
     "cta2": "ALGO NUEVO",
     "copyright": "© 2026 DAVID DUQUE DÍAZ — PORTFOLIO"

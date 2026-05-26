@@ -1,62 +1,128 @@
+import { useEffect, useRef, useState } from 'react';
 import { useLocale } from '../i18n/context.jsx';
 import Header from '../includes/Header';
-import Profile from '../components/Profile.jsx';
-import Footer from "../includes/Footer.jsx";
-import Separator from "../components/Separator.jsx";
-import Item from "../components/Item.jsx";
+import Footer from '../includes/Footer.jsx';
 import profileData from '../data/profile.json';
 import educationData from '../data/education.json';
 import experienceData from '../data/experience.json';
 import languagesData from '../data/languages.json';
 import skillsData from '../data/skills.json';
 
-function EducationEntry({ entry }) {
-  const { t } = useLocale();
+function useInView(threshold = 0.12) {
+  const [inView, setInView] = useState(false);
+  const ref = useRef(null);
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const obs = new IntersectionObserver(
+      ([e]) => { if (e.isIntersecting) { setInView(true); obs.disconnect(); } },
+      { threshold }
+    );
+    obs.observe(el);
+    return () => obs.disconnect();
+  }, [threshold]);
+  return [ref, inView];
+}
+
+function Reveal({ children, className = '', delay = 0 }) {
+  const [ref, inView] = useInView();
   return (
-    <div className="flex flex-col items-start gap-3 px-4 md:px-10">
-      <p className="text-xl font-bold text-gray-900">{t(entry.titleKey)}</p>
-      <p>{t(entry.centerKey)}</p>
-      <p>{entry.startDate} - {entry.endDate}</p>
-      <p>{entry.location}</p>
-      <h4 className="text-large font-bold text-gray-900">{t(entry.levelKey)}</h4>
+    <div ref={ref} className={className} style={{
+      opacity: inView ? 1 : 0,
+      transform: inView ? 'none' : 'translateY(20px)',
+      transition: `opacity 0.6s cubic-bezier(0.16,1,0.3,1) ${delay}ms, transform 0.6s cubic-bezier(0.16,1,0.3,1) ${delay}ms`,
+    }}>
+      {children}
     </div>
   );
 }
 
-function ExperienceEntry({ entry }) {
-  const { t } = useLocale();
+function SectionHeader({ eyebrow, title }) {
   return (
-    <div className="flex flex-col items-start gap-3 px-4 md:px-10">
-      <p className="text-xl font-bold text-gray-900">{t(entry.titleKey)}</p>
-      {entry.companyKey && t(entry.companyKey) && <p>{t(entry.companyKey)}</p>}
-      <p>{t(entry.descriptionKey)}</p>
-      <p>{entry.startDate} - {entry.endDate}</p>
-      <p>{entry.location}</p>
+    <div className="mb-10">
+      <p className="text-xs uppercase tracking-widest font-semibold mb-2
+        text-indigo-600 dark:text-indigo-400">
+        {eyebrow}
+      </p>
+      <h2 className="text-2xl md:text-3xl font-extrabold
+        text-gray-900 dark:text-white">
+        {title}
+      </h2>
+      <div className="mt-4 h-px bg-gradient-to-r from-indigo-500/40 dark:from-indigo-500/60 to-transparent" />
     </div>
   );
 }
 
-function LanguageSection({ languages, categories }) {
-  const { t } = useLocale();
+const SKILL_CATEGORIES = [
+  { id: 'frontend', label: 'Frontend', accent: 'text-sky-600 dark:text-sky-400' },
+  { id: 'backend',  label: 'Backend',  accent: 'text-violet-600 dark:text-violet-400' },
+  { id: 'mobile',   label: 'Mobile',   accent: 'text-emerald-600 dark:text-emerald-400' },
+  { id: 'database', label: 'Database', accent: 'text-amber-600 dark:text-amber-400' },
+];
+
+function SkillChip({ skill }) {
   return (
-    <div className="flex flex-col md:flex-row w-full md:columns-2 align-start md:items-start gap-8 md:gap-15 justify-start px-4 md:px-10">
-      {categories.map((cat) => (
-        <div key={cat.key}>
-          <p className="text-xl font-bold text-gray-900">{t(cat.key)}</p>
-          <div className={`flex gap-3 ${cat.key === 'languages.mother' ? 'pt-3' : 'pt-3'}`}>
-            {languages.filter((l) => l.categoryKey === cat.key).map((lang) => (
-              <Item
-                key={lang.id}
-                text={t(lang.nameKey)}
-                urlImgFlag={lang.urlImgFlag}
-                color="indigo"
-                bgColor={lang.bgColor || 'transparent'}
-                principal={cat.key === 'languages.proficient' ? 'true' : 'false'}
-              />
-            ))}
-          </div>
+    <div className="flex items-center gap-2 px-3 py-2 rounded-lg transition-all duration-200 cursor-default
+      bg-gray-100 border border-gray-200 hover:border-gray-300 hover:bg-gray-200
+      dark:bg-white/5 dark:border-white/10 dark:hover:border-white/20 dark:hover:bg-white/8">
+      <img src={skill.urlImgFlag} alt={skill.name} className="w-5 h-5 object-contain flex-shrink-0" />
+      <span className="text-sm text-gray-700 dark:text-gray-300">{skill.name}</span>
+    </div>
+  );
+}
+
+function TimelineEntry({ title, subtitle, description, years, location, badge, delay = 0 }) {
+  const [ref, inView] = useInView(0.1);
+  return (
+    <div ref={ref} className="relative pl-8" style={{
+      opacity: inView ? 1 : 0,
+      transform: inView ? 'none' : 'translateX(-16px)',
+      transition: `opacity 0.6s cubic-bezier(0.16,1,0.3,1) ${delay}ms, transform 0.6s cubic-bezier(0.16,1,0.3,1) ${delay}ms`,
+    }}>
+      <span className="absolute left-0 top-2 -translate-x-1/2 w-3 h-3 rounded-full z-10
+        border-2 border-indigo-500
+        bg-stone-50 dark:bg-gray-950" />
+
+      <div className="rounded-xl p-5 transition-colors
+        bg-white border border-gray-200 hover:border-gray-300
+        dark:bg-white/[0.03] dark:border-white/5 dark:hover:border-white/10">
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 mb-2">
+          <h3 className="font-bold text-base leading-snug
+            text-gray-900 dark:text-white">
+            {title}
+          </h3>
+          <span className="text-xs font-medium shrink-0
+            text-indigo-600 dark:text-indigo-400">
+            {years}
+          </span>
         </div>
-      ))}
+        {subtitle && (
+          <p className="text-sm font-medium mb-1
+            text-gray-700 dark:text-gray-300">
+            {subtitle}
+          </p>
+        )}
+        {description && (
+          <p className="text-sm leading-relaxed
+            text-gray-500 dark:text-gray-500">
+            {description}
+          </p>
+        )}
+        <div className="flex flex-wrap items-center gap-2 mt-3">
+          {location && (
+            <span className="text-xs text-gray-400 dark:text-gray-500">
+              📍 {location}
+            </span>
+          )}
+          {badge && (
+            <span className="text-xs px-2 py-0.5 rounded-full
+              bg-indigo-50 text-indigo-700 border border-indigo-200
+              dark:bg-indigo-500/10 dark:text-indigo-300 dark:border-indigo-500/20">
+              {badge}
+            </span>
+          )}
+        </div>
+      </div>
     </div>
   );
 }
@@ -64,74 +130,189 @@ function LanguageSection({ languages, categories }) {
 export default function Home() {
   const { t } = useLocale();
 
+  const skillsByCategory = SKILL_CATEGORIES
+    .map(cat => ({ ...cat, skills: skillsData.filter(s => s.category === cat.id) }))
+    .filter(cat => cat.skills.length > 0);
+
+  const yearOf = (dateStr) => dateStr?.split('/')?.[2] ?? '';
+
   return (
-    <div className="min-h-screen bg-stone-100">
-      <Header textLogo1="header.logo1" textLogo2="header.logo2" color1="white" color2="indigo" />
+    <div className="min-h-screen bg-stone-50 dark:bg-gray-950 text-gray-900 dark:text-white">
+      <Header textLogo1="header.logo1" textLogo2="header.logo2" />
 
-      <main className="py-8 min-h-[92vh] flex flex-col justify-start gap-8 items-center w-full">
+      {/* ── HERO ── */}
+      <section className="relative overflow-hidden border-b border-gray-200 dark:border-white/5">
+        <div className="absolute inset-0 pointer-events-none"
+          style={{ background: 'radial-gradient(ellipse 80% 60% at 50% 0%, var(--hero-glow) 0%, transparent 100%)' }} />
 
-        <section className="text-center flex flex-col md:flex-row gap-6 md:gap-2 justify-between items-center bg-sky-700/50
-          w-full pt-25 pb-10 px-6 md:px-15 border-b border-slate-950 shadow-[0_10px_10px_rgba(0,0,0,0.5)]">
-          <Profile avatarUrl={profileData.avatarUrl} />
-          <div className="flex flex-col justify-center items-center gap-5 md:justify-start md:items-start">
-            <a className="text-xl underline font-bold text-gray-900" href={"mailto:" + profileData.email}>{profileData.email}</a>
-            <a className="text-xl underline font-bold text-gray-900" href={"tel:" + profileData.phone.replace(/[\s()]/g, '')}>{profileData.phone}</a>
+        <div className="max-w-6xl mx-auto px-4 md:px-8 pt-28 md:pt-32 pb-16 md:pb-24">
+          <div className="flex flex-col md:flex-row gap-10 md:gap-16 items-center">
+
+            {/* Avatar */}
+            <Reveal className="flex-shrink-0 flex justify-center">
+              <div className="relative">
+                <div className="w-36 h-36 md:w-44 md:h-44 rounded-full overflow-hidden
+                  ring-2 ring-indigo-500/50 dark:ring-indigo-500/60
+                  ring-offset-4 ring-offset-stone-50 dark:ring-offset-gray-950">
+                  <img src={profileData.avatarUrl} alt="David Duque Díaz"
+                    className="w-full h-full object-cover" />
+                </div>
+                <div className="absolute inset-0 rounded-full
+                  shadow-[0_0_50px_rgba(99,102,241,0.15)] dark:shadow-[0_0_50px_rgba(99,102,241,0.25)]" />
+              </div>
+            </Reveal>
+
+            {/* Info */}
+            <Reveal delay={100} className="flex-1 text-center md:text-left space-y-5">
+              <div>
+                <p className="text-xs uppercase tracking-widest font-semibold mb-3
+                  text-indigo-600 dark:text-indigo-400">
+                  {t('profile.role')}
+                </p>
+                <h1 className="text-5xl md:text-6xl font-extrabold tracking-tight leading-none
+                  text-gray-900 dark:text-white">
+                  {t('profile.name')}
+                </h1>
+                <p className="text-base md:text-lg font-medium mt-3
+                  text-gray-500 dark:text-gray-400">
+                  {t('profile.title')}
+                </p>
+              </div>
+
+              <div className="flex flex-col sm:flex-row gap-2 sm:gap-5 items-center md:items-start justify-center md:justify-start">
+                <a href={`mailto:${profileData.email}`}
+                  className="text-sm transition-colors
+                    text-gray-500 hover:text-indigo-600
+                    dark:text-gray-400 dark:hover:text-indigo-300">
+                  ✉ {profileData.email}
+                </a>
+                <span className="hidden sm:block text-gray-300 dark:text-white/10">·</span>
+                <a href={`tel:${profileData.phone.replace(/[\s()]/g, '')}`}
+                  className="text-sm transition-colors
+                    text-gray-500 hover:text-indigo-600
+                    dark:text-gray-400 dark:hover:text-indigo-300">
+                  ☎ {profileData.phone}
+                </a>
+              </div>
+
+              <div className="flex gap-3 justify-center md:justify-start">
+                <a href="resources/CV - David Duque Díaz.pdf" download
+                  className="inline-flex items-center gap-2 text-white font-semibold px-5 py-2.5 rounded-xl transition-all duration-200 text-sm
+                    bg-indigo-600 hover:bg-indigo-500">
+                  {t('header.cv')} ↓
+                </a>
+                <a href="#/projects"
+                  className="inline-flex items-center gap-2 font-semibold px-5 py-2.5 rounded-xl transition-all duration-200 text-sm group
+                    bg-gray-100 border border-gray-200 text-gray-700 hover:text-gray-900 hover:bg-gray-200
+                    dark:bg-white/5 dark:border-white/10 dark:text-gray-300 dark:hover:text-white dark:hover:bg-white/10">
+                  {t('header.projects')}
+                  <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
+                </a>
+              </div>
+            </Reveal>
           </div>
-          <div className="flex flex-col justify-center items-center gap-5">
-            <h2 className="text-3xl font-bold text-slate-950">{t('profile.name')}</h2>
-            <h3 className="text-xl font-bold text-gray-900">{t('profile.title')}</h3>
+        </div>
+      </section>
+
+      <div className="max-w-6xl mx-auto px-4 md:px-8 space-y-20 md:space-y-28 py-16 md:py-24">
+
+        {/* ── SKILLS ── */}
+        <section>
+          <Reveal>
+            <SectionHeader eyebrow={t('sections.eyebrow.techStack')} title={t('sections.skills')} />
+          </Reveal>
+          <div className="space-y-8">
+            {skillsByCategory.map((cat, i) => (
+              <Reveal key={cat.id} delay={i * 60}>
+                <div>
+                  <p className={`text-xs uppercase tracking-wider font-semibold mb-3 ${cat.accent}`}>
+                    {cat.label}
+                  </p>
+                  <div className="flex flex-wrap gap-2">
+                    {cat.skills.map(skill => (
+                      <SkillChip key={skill.id} skill={skill} />
+                    ))}
+                  </div>
+                </div>
+              </Reveal>
+            ))}
           </div>
         </section>
 
-        <section className="flex flex-col px-6 md:px-15 justify-start items-start gap-5 w-full">
-          <Separator text={t('sections.education')} color="indigo" />
-          {educationData.map((entry) => (
-            <EducationEntry key={entry.id} entry={entry} />
-          ))}
-        </section>
-
-        <section className="flex flex-col px-6 md:px-15 justify-start items-start gap-5 w-full">
-          <Separator text={t('sections.experience')} color="indigo" />
-          {experienceData.map((entry) => (
-            <ExperienceEntry key={entry.id} entry={entry} />
-          ))}
-        </section>
-
-        <section className="flex flex-col px-6 md:px-15 justify-start items-start gap-5 w-full">
-          <Separator text={t('sections.languages')} color="indigo" />
-          <LanguageSection
-            languages={languagesData}
-            categories={[
-              { key: 'languages.mother' },
-              { key: 'languages.proficient' }
-            ]}
-          />
-        </section>
-
-        <section className="flex flex-col px-6 md:px-15 justify-start items-start gap-5 w-full">
-          <Separator text={t('sections.skills')} color="indigo" />
-          <div className="flex flex-wrap w-full gap-4 md:gap-5 md:columns-3 items-center justify-start px-4 md:px-10">
-            {skillsData.map((skill) => (
-              <Item
-                key={skill.id}
-                text={skill.name}
-                urlImgFlag={skill.urlImgFlag}
-                color="indigo"
-                principal="false"
+        {/* ── EDUCATION ── */}
+        <section>
+          <Reveal>
+            <SectionHeader eyebrow={t('sections.eyebrow.education')} title={t('sections.education')} />
+          </Reveal>
+          <div className="relative border-l-2 border-indigo-500/20 dark:border-indigo-500/15 ml-2 space-y-5">
+            {educationData.map((entry, i) => (
+              <TimelineEntry
+                key={entry.id}
+                title={t(entry.titleKey)}
+                subtitle={t(entry.centerKey)}
+                years={`${yearOf(entry.startDate)} – ${yearOf(entry.endDate)}`}
+                location={entry.location}
+                badge={t(entry.levelKey)}
+                delay={i * 80}
               />
             ))}
           </div>
         </section>
 
-      </main>
+        {/* ── EXPERIENCE ── */}
+        <section>
+          <Reveal>
+            <SectionHeader eyebrow={t('sections.eyebrow.experience')} title={t('sections.experience')} />
+          </Reveal>
+          <div className="relative border-l-2 border-indigo-500/20 dark:border-indigo-500/15 ml-2 space-y-5">
+            {experienceData.map((entry, i) => (
+              <TimelineEntry
+                key={entry.id}
+                title={t(entry.titleKey)}
+                subtitle={entry.companyKey && t(entry.companyKey) ? t(entry.companyKey) : null}
+                description={t(entry.descriptionKey)}
+                years={`${yearOf(entry.startDate)} – ${yearOf(entry.endDate)}`}
+                location={entry.location}
+                delay={i * 80}
+              />
+            ))}
+          </div>
+        </section>
+
+        {/* ── LANGUAGES ── */}
+        <section>
+          <Reveal>
+            <SectionHeader eyebrow={t('sections.eyebrow.languages')} title={t('sections.languages')} />
+          </Reveal>
+          <Reveal delay={60}>
+            <div className="flex flex-wrap gap-4">
+              {languagesData.map(lang => (
+                <div key={lang.id}
+                  className="flex items-center gap-4 px-5 py-4 rounded-xl transition-colors cursor-default
+                    bg-white border border-gray-200 hover:border-gray-300
+                    dark:bg-white/[0.03] dark:border-white/5 dark:hover:border-white/10">
+                  <img src={lang.urlImgFlag} alt={t(lang.nameKey)}
+                    className="w-9 h-6 object-cover rounded shadow-sm flex-shrink-0" />
+                  <div>
+                    <p className="font-semibold text-sm text-gray-900 dark:text-white">
+                      {t(lang.nameKey)}
+                    </p>
+                    <p className="text-xs mt-0.5 text-gray-400 dark:text-gray-500">
+                      {t(lang.categoryKey)}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </Reveal>
+        </section>
+
+      </div>
 
       <Footer
         text1="footer.cta1"
         text2="footer.cta2"
         text3="footer.copyright"
-        color1="gray"
-        color2="indigo"
-        color3="gray"
       />
     </div>
   );

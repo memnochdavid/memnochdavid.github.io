@@ -55,17 +55,24 @@ Para retomar el trabajo, simplemente pide que examine este `index.md`.
 
 ## Roadmap 2: Gestión de contenido (CMS-free)
 
-**Objetivo:** Permitir editar el contenido del portfolio sin tocar código, usando solo archivos de datos estáticos (JSON/YAML). Plantear si tiene sentido usar generación estática parcial o headless CMS que exporte JSON.
+**Objetivo:** Permitir editar el contenido del portfolio sin tocar código, usando solo archivos de datos estáticos (JSON/YAML). Opcionalmente, añadir edición live desde el navegador para secciones del CV.
 
-**Opciones a evaluar:**
-- [ ] Evaluar si `@astrojs/react` o similar aporta valor o es overkill
-- [ ] Evaluar TinyCMS / Decap CMS (antes Netlify CMS) con GitHub Pages
-- [ ] Evaluar una solución ad-hoc con loads de JSON desde `/public/data/`
-- [ ] Decidir si se usa YAML (más legible) o JSON como formato fuente
+**Implementado:**
+- [x] Solución ad-hoc: todo el contenido externalizado a `src/data/*.json` e `src/i18n/*.json`
+- [x] Formación, experiencia, idiomas, skills y proyectos editables tocando solo JSON
+- [x] `@astrojs/react` descartado — overkill para este stack
+- [x] JSON elegido sobre YAML — ya en uso y funcionando con Vite
+
+**Pendiente — edición live:**
+- [ ] Evaluar Decap CMS con GitHub Pages (OAuth via GitHub API → commit directo desde el navegador)
+- [ ] Configurar `public/admin/index.html` y `public/admin/config.yml` para Decap CMS
+- [ ] Exponer colecciones editables: formación, experiencia, skills (mapear sobre los JSON actuales)
+- [ ] Probar flujo completo: editar en `/admin` → commit automático → deploy via CI/CD
 
 **Criterios de aceptación:**
-- El contenido se edita desde ficheros Markdown, YAML o JSON sin tocar código
-- El build de Vite funciona con npm run build
+- El contenido se edita desde ficheros JSON sin tocar código ✅
+- El build de Vite funciona con `pnpm run build` ✅
+- (Pendiente) Formación, skills y experiencia son editables desde una UI en el navegador sin abrir un editor de código
 
 ---
 

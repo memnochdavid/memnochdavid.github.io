@@ -1,21 +1,12 @@
 [
   {
-    "id": 1,
-    "titleKey": "education.0.title",
-    "centerKey": "education.0.center",
-    "startDate": "01/09/2008",
-    "endDate": "15/07/2010",
-    "location": "Baza, Spain",
-    "levelKey": "education.0.level"
-  },
-  {
-    "id": 2,
-    "titleKey": "education.1.title",
-    "centerKey": "education.1.center",
-    "startDate": "01/09/2008",
-    "endDate": "15/09/2010",
-    "location": "Baza, Spain",
-    "levelKey": "education.1.level"
+    "id": 4,
+    "titleKey": "education.3.title",
+    "centerKey": "education.3.center",
+    "startDate": "01/09/2025",
+    "endDate": "15/07/2026",
+    "location": "Granada, Spain",
+    "levelKey": "education.3.level"
   },
   {
     "id": 3,
@@ -27,12 +18,21 @@
     "levelKey": "education.2.level"
   },
   {
-    "id": 4,
-    "titleKey": "education.3.title",
-    "centerKey": "education.3.center",
-    "startDate": "01/09/2025",
-    "endDate": "15/07/2026",
-    "location": "Granada, Spain",
-    "levelKey": "education.3.level"
+    "id": 2,
+    "titleKey": "education.1.title",
+    "centerKey": "education.1.center",
+    "startDate": "01/09/2008",
+    "endDate": "15/09/2010",
+    "location": "Baza, Spain",
+    "levelKey": "education.1.level"
+  },
+  {
+    "id": 1,
+    "titleKey": "education.0.title",
+    "centerKey": "education.0.center",
+    "startDate": "01/09/2008",
+    "endDate": "15/07/2010",
+    "location": "Baza, Spain",
+    "levelKey": "education.0.level"
   }
 ]

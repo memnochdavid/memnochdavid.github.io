@@ -1,39 +1,124 @@
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useLocale } from '../i18n/context.jsx';
 import Header from '../includes/Header';
-import Footer from "../includes/Footer.jsx";
+import Footer from '../includes/Footer.jsx';
 import projectsData from '../data/projects.json';
 
-function ImageShowcase({ images, alt, className = '' }) {
-  const [active, setActive] = useState(0);
+function useInView(threshold = 0.12) {
+  const [inView, setInView] = useState(false);
+  const ref = useRef(null);
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const obs = new IntersectionObserver(
+      ([e]) => { if (e.isIntersecting) { setInView(true); obs.disconnect(); } },
+      { threshold }
+    );
+    obs.observe(el);
+    return () => obs.disconnect();
+  }, [threshold]);
+  return [ref, inView];
+}
+
+function Reveal({ children, className = '', delay = 0 }) {
+  const [ref, inView] = useInView();
+  return (
+    <div ref={ref} className={className} style={{
+      opacity: inView ? 1 : 0,
+      transform: inView ? 'none' : 'translateY(22px)',
+      transition: `opacity 0.6s cubic-bezier(0.16,1,0.3,1) ${delay}ms, transform 0.6s cubic-bezier(0.16,1,0.3,1) ${delay}ms`,
+    }}>
+      {children}
+    </div>
+  );
+}
+
+function Pills({ text, accentClass }) {
+  if (!text) return null;
+  return (
+    <div className="flex flex-wrap gap-2">
+      {text.split(' · ').map((item, i) => (
+        <span key={i} className={`text-xs font-medium px-3 py-1 rounded-full
+          bg-gray-100 border border-gray-200
+          dark:bg-white/5 dark:border-white/10
+          ${accentClass}`}>
+          {item}
+        </span>
+      ))}
+    </div>
+  );
+}
+
+const STACK_CONFIGS = [
+  { z: 1, tx: 56, ty: 28, rot: 5,   opacity: 0.45, delay: 0 },
+  { z: 2, tx: 28, ty: 14, rot: 2.5, opacity: 0.68, delay: 100 },
+  { z: 3, tx: 0,  ty: 0,  rot: 0,   opacity: 1,    delay: 200 },
+];
+
+function StackedScreenshots({ images, inView, interactive = false }) {
+  const [activeIdx, setActiveIdx] = useState(0);
+
+  if (!images?.length) {
+    return (
+      <div className="relative w-full rounded-2xl bg-gray-200 dark:bg-gray-800/40 border border-gray-200 dark:border-white/5"
+        style={{ paddingTop: '62%' }} />
+    );
+  }
+
+  const total = images.length;
+  const showCount = Math.min(total, 3);
+  const configs = STACK_CONFIGS.slice(STACK_CONFIGS.length - showCount);
+
+  const getImg = (stackPos) =>
+    interactive
+      ? images[(activeIdx + stackPos) % total]
+      : images[stackPos % total];
 
   return (
-    <div className={`relative ${className}`}>
-      <div className="relative w-full h-full overflow-hidden bg-gray-800">
-        {images.map((src, i) => (
-          <img
-            key={i}
-            className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ${
-              i === active ? 'opacity-100' : 'opacity-0'
-            }`}
-            src={src}
-            alt={`${alt} ${i + 1}`}
-          />
-        ))}
+    <div className="relative select-none">
+      <div className="relative w-full" style={{ paddingTop: '62%' }}>
+        {configs.map((cfg, i) => {
+          const stackPos = showCount - 1 - i;
+          const isFront = stackPos === 0;
+          const src = getImg(stackPos);
+
+          return (
+            <div
+              key={`card-${i}`}
+              onClick={isFront && interactive && total > 1
+                ? () => setActiveIdx(p => (p + 1) % total)
+                : undefined}
+              className={`absolute inset-0 rounded-2xl overflow-hidden ${
+                isFront && interactive && total > 1 ? 'cursor-pointer' : ''
+              }`}
+              style={{
+                zIndex: cfg.z,
+                boxShadow: '0 24px 64px -12px rgba(0,0,0,0.5), 0 4px 16px rgba(0,0,0,0.3)',
+                transform: inView
+                  ? `translate(${cfg.tx}px, ${cfg.ty}px) rotate(${cfg.rot}deg)`
+                  : `translate(${cfg.tx + 90}px, ${cfg.ty}px) rotate(${cfg.rot}deg)`,
+                opacity: inView ? cfg.opacity : 0,
+                transition: `transform 0.85s cubic-bezier(0.16,1,0.3,1) ${cfg.delay}ms, opacity 0.7s ease ${cfg.delay}ms`,
+              }}
+            >
+              <img src={src} alt="" className="w-full h-full object-cover" />
+              {isFront && interactive && total > 1 && (
+                <div className="absolute inset-0 bg-black/0 hover:bg-black/8 transition-colors" />
+              )}
+            </div>
+          );
+        })}
       </div>
 
-      {images.length > 1 && (
-        <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex items-center gap-3">
+      {interactive && total > 1 && (
+        <div className="flex justify-center gap-3 mt-8" style={{ position: 'relative', zIndex: 10 }}>
           {images.map((_, i) => (
-            <button
-              key={i}
-              onClick={() => setActive(i)}
+            <button key={i} onClick={() => setActiveIdx(i)}
               className={`transition-all duration-300 cursor-pointer ${
-                i === active
-                  ? 'bg-white w-8 h-2 rounded-full'
-                  : 'bg-white/40 w-2 h-2 rounded-full hover:bg-white/70'
-              }`}
-            />
+                i === activeIdx
+                  ? 'bg-white w-6 h-2 rounded-full'
+                  : 'bg-white/30 w-2 h-2 rounded-full hover:bg-white/60'
+              }`} />
           ))}
         </div>
       )}
@@ -41,227 +126,259 @@ function ImageShowcase({ images, alt, className = '' }) {
   );
 }
 
-function ProjectCard({ project, onSelect }) {
+function ProjectSection({ project, onSelect }) {
   const { t } = useLocale();
   const c = project.color || 'gray';
-  const allImgs = project.screenshots || [];
+  const [ref, inView] = useInView(0.08);
 
   return (
-    <button
-      onClick={onSelect}
-      className="group relative w-full text-left rounded-2xl overflow-hidden border border-white/5 bg-gray-900 cursor-pointer
-        transition-all duration-500 hover:scale-[1.02] hover:shadow-2xl hover:shadow-black/50 animate-fadeIn"
-    >
-      <div className="relative h-64 md:h-80">
-        {allImgs.length > 0 ? (
-          <ImageShowcase images={allImgs} alt={t(project.titleKey)} className="h-full" />
-        ) : (
-          <div className="w-full h-full bg-gray-800" />
-        )}
-        <div className="absolute inset-0 bg-gradient-to-t from-gray-950 via-gray-950/50 to-transparent pointer-events-none" />
+    <section ref={ref} className="py-16 md:py-24 border-b border-gray-200 dark:border-white/5 last:border-b-0">
+      <div className="grid md:grid-cols-2 gap-10 md:gap-16 items-center">
 
-        <div className="absolute top-4 right-4 pointer-events-none">
-          <span className={`bg-${c}-500/90 text-white text-xs font-bold px-3 py-1 rounded-full backdrop-blur-sm`}>
-            TFG - {project.tfg} {project.year}
-          </span>
-        </div>
-
-        <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8 pointer-events-none">
-          <div className="flex items-center gap-3 mb-3">
+        {/* Text */}
+        <div className="space-y-5 order-2 md:order-1" style={{
+          opacity: inView ? 1 : 0,
+          transform: inView ? 'none' : 'translateX(-20px)',
+          transition: 'opacity 0.7s cubic-bezier(0.16,1,0.3,1) 80ms, transform 0.7s cubic-bezier(0.16,1,0.3,1) 80ms',
+        }}>
+          <div className="flex items-center gap-4">
             {project.logoUrl && (
-              <img
-                className="h-10 w-10 md:h-12 md:w-12 rounded-lg bg-white/20 p-1 object-contain"
-                src={project.logoUrl}
-                alt={t(project.titleKey)}
-              />
+              <img src={project.logoUrl} alt="" className="h-12 w-12 rounded-xl object-contain flex-shrink-0
+                bg-gray-100 dark:bg-white/10 p-1.5" />
             )}
             <div>
-              <h2 className="text-xl md:text-2xl font-extrabold drop-shadow-lg">
+              <h2 className="text-2xl md:text-3xl font-extrabold text-gray-900 dark:text-white">
                 {t(project.titleKey)}
               </h2>
-              <p className={`text-sm text-${c}-200 drop-shadow`}>
+              <p className={`text-sm mt-0.5 text-${c}-600 dark:text-${c}-300`}>
                 {t(project.subtitleKey)}
               </p>
             </div>
           </div>
 
-          <div className={`mt-4 inline-flex items-center gap-2 text-sm font-semibold text-${c}-300
-            transition-all duration-300 group-hover:gap-3`}>
-            Ver proyecto
-            <span className="text-lg">→</span>
+          <span className={`inline-block bg-${c}-500 text-white text-xs font-bold px-3 py-1.5 rounded-full`}>
+            TFG · {project.tfg} {project.year}
+          </span>
+
+          <p className="text-gray-600 dark:text-gray-400 leading-relaxed text-sm md:text-base">
+            {t(project.descriptionKey)}
+          </p>
+
+          <div className="flex flex-wrap gap-2">
+            {project.stack.slice(0, 5).map(tech => (
+              <span key={tech.name}
+                className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs
+                  bg-gray-100 border border-gray-200 text-gray-700
+                  dark:bg-white/5 dark:border-white/10 dark:text-gray-300">
+                <img src={tech.icon} alt="" className="w-3.5 h-3.5 object-contain" />
+                {tech.name}
+              </span>
+            ))}
           </div>
+
+          <button onClick={onSelect}
+            className={`inline-flex items-center gap-2 text-white font-semibold px-6 py-3 rounded-xl transition-all duration-200 cursor-pointer group
+              bg-${c}-600 hover:bg-${c}-500`}>
+            {t('projects.viewProject')}
+            <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
+          </button>
+        </div>
+
+        {/* Screenshots */}
+        <div className="order-1 md:order-2" style={{
+          opacity: inView ? 1 : 0,
+          transition: 'opacity 0.5s ease 0ms',
+        }}>
+          <StackedScreenshots images={project.screenshots || []} inView={inView} />
         </div>
       </div>
-    </button>
+    </section>
   );
 }
 
 function ProjectDetail({ project, onBack }) {
   const { t } = useLocale();
   const c = project.color || 'gray';
-  const allImgs = project.screenshots || [];
+  const [heroRef, heroInView] = useInView(0.08);
 
   return (
-    <div className="bg-gray-900 text-white rounded-2xl shadow-2xl overflow-hidden border border-white/5 animate-fadeIn">
+    <div className="text-gray-900 dark:text-white space-y-8 md:space-y-12">
 
-      <button
-        onClick={onBack}
-        className="flex items-center gap-2 px-6 pt-6 pb-0 text-sm text-gray-400 hover:text-white transition-colors cursor-pointer"
-      >
-        <span className="text-lg">←</span> Volver
+      <button onClick={onBack}
+        className="flex items-center gap-2 text-sm transition-colors cursor-pointer
+          text-gray-500 hover:text-gray-900
+          dark:text-gray-400 dark:hover:text-white">
+        ← {t('projects.back')}
       </button>
 
-      {allImgs.length > 0 && (
-        <div className="relative h-56 md:h-96">
-          <ImageShowcase images={allImgs} alt={t(project.titleKey)} className="h-full" />
-          <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/30 to-transparent pointer-events-none" />
-          <div className="absolute bottom-0 left-0 right-0 p-6 md:p-10 pointer-events-none">
-            <div className="flex items-center gap-4">
-              {project.logoUrl && (
-                <img
-                  className="h-14 w-14 md:h-18 md:w-18 rounded-xl bg-white/20 p-1 object-contain"
-                  src={project.logoUrl}
-                  alt={t(project.titleKey)}
-                />
-              )}
-              <div>
-                <h1 className="text-2xl md:text-4xl font-extrabold drop-shadow-lg">
-                  {t(project.titleKey)}
-                </h1>
-                <p className={`text-sm md:text-base text-${c}-200 mt-1 drop-shadow`}>
-                  {t(project.subtitleKey)}
-                </p>
-              </div>
+      {/* Hero */}
+      <div ref={heroRef} className="grid md:grid-cols-2 gap-10 md:gap-16 items-center">
+        <div className="space-y-4 order-2 md:order-1" style={{
+          opacity: heroInView ? 1 : 0,
+          transform: heroInView ? 'none' : 'translateX(-20px)',
+          transition: 'opacity 0.7s cubic-bezier(0.16,1,0.3,1) 80ms, transform 0.7s cubic-bezier(0.16,1,0.3,1) 80ms',
+        }}>
+          <div className="flex items-center gap-4">
+            {project.logoUrl && (
+              <img src={project.logoUrl} alt="" className="h-14 w-14 rounded-xl object-contain flex-shrink-0
+                bg-gray-100 dark:bg-white/10 p-1.5" />
+            )}
+            <div>
+              <h1 className="text-3xl md:text-4xl font-extrabold text-gray-900 dark:text-white">
+                {t(project.titleKey)}
+              </h1>
+              <p className={`text-sm mt-1 text-${c}-600 dark:text-${c}-300`}>
+                {t(project.subtitleKey)}
+              </p>
             </div>
-            <span className={`inline-block mt-3 bg-${c}-500/90 text-white text-xs font-bold px-3 py-1 rounded-full backdrop-blur-sm`}>
-              TFG - {project.tfg} {project.year}
-            </span>
           </div>
-        </div>
-      )}
-
-      <div className="p-6 md:p-10 space-y-10">
-
-        <div className="grid md:grid-cols-2 gap-8">
-          <div>
-            <h2 className={`text-lg font-bold text-${c}-400 mb-3 uppercase tracking-wider text-sm`}>
-              {t('projects.pageTitle')}
-            </h2>
-            <p className="text-gray-300 leading-relaxed text-sm md:text-base">
-              {t(project.descriptionKey)}
-            </p>
-          </div>
-          <div className="bg-white/[0.03] border border-white/5 rounded-xl p-5 backdrop-blur-sm">
-            <h3 className="text-white/60 text-xs uppercase tracking-wider font-semibold mb-3">Highlights</h3>
-            <p className="text-gray-300 text-sm leading-relaxed">{t(project.highlightsKey)}</p>
-          </div>
+          <span className={`inline-block bg-${c}-500 text-white text-xs font-bold px-3 py-1.5 rounded-full`}>
+            TFG · {project.tfg} {project.year}
+          </span>
+          <p className="text-gray-600 dark:text-gray-400 leading-relaxed text-sm md:text-base">
+            {t(project.descriptionKey)}
+          </p>
         </div>
 
-        <div className="bg-white/[0.03] border border-white/5 rounded-xl p-5 backdrop-blur-sm">
-          <h3 className="text-white/60 text-xs uppercase tracking-wider font-semibold mb-4">Stack</h3>
+        <div className="order-1 md:order-2" style={{
+          opacity: heroInView ? 1 : 0,
+          transition: 'opacity 0.5s ease 0ms',
+        }}>
+          <StackedScreenshots images={project.screenshots || []} inView={heroInView} interactive={true} />
+        </div>
+      </div>
+
+      {/* Highlights */}
+      <Reveal>
+        <div className="rounded-2xl p-6
+          bg-white border border-gray-200
+          dark:bg-white/[0.03] dark:border-white/5">
+          <h3 className="text-xs uppercase tracking-wider font-semibold mb-4
+            text-gray-400 dark:text-white/50">
+            {t('projects.labels.highlights')}
+          </h3>
+          <Pills text={t(project.highlightsKey)} accentClass={`text-${c}-700 dark:text-${c}-300`} />
+        </div>
+      </Reveal>
+
+      {/* Stack */}
+      <Reveal delay={60}>
+        <div className="rounded-2xl p-6
+          bg-white border border-gray-200
+          dark:bg-white/[0.03] dark:border-white/5">
+          <h3 className="text-xs uppercase tracking-wider font-semibold mb-4
+            text-gray-400 dark:text-white/50">
+            {t('projects.labels.stack')}
+          </h3>
           <div className="flex flex-wrap gap-3">
-            {project.stack.map((tech) => (
-              <div
-                key={tech.name}
-                className="flex items-center gap-2 bg-white/5 px-3 py-2 rounded-lg border border-white/5 hover:bg-white/10 transition-colors"
-              >
+            {project.stack.map(tech => (
+              <div key={tech.name}
+                className="flex items-center gap-2 px-3 py-2 rounded-lg transition-colors
+                  bg-gray-100 border border-gray-200 hover:bg-gray-200
+                  dark:bg-white/5 dark:border-white/5 dark:hover:bg-white/10">
                 <img className="w-5 h-5 object-contain" src={tech.icon} alt={tech.name} />
-                <span className="text-sm text-gray-300">{tech.name}</span>
+                <span className="text-sm text-gray-700 dark:text-gray-300">{tech.name}</span>
               </div>
             ))}
           </div>
         </div>
+      </Reveal>
 
-        {project.modulesKey && (
-          <div className="bg-white/[0.03] border border-white/5 rounded-xl p-5 backdrop-blur-sm">
-            <h3 className={`text-${c}-400 text-xs uppercase tracking-wider font-semibold mb-3`}>Módulos</h3>
-            <p className="text-gray-300 text-sm leading-relaxed">{t(project.modulesKey)}</p>
+      {/* Modules */}
+      {project.modulesKey && (
+        <Reveal delay={120}>
+          <div className="rounded-2xl p-6
+            bg-white border border-gray-200
+            dark:bg-white/[0.03] dark:border-white/5">
+            <h3 className={`text-xs uppercase tracking-wider font-semibold mb-4 text-${c}-600 dark:text-${c}-400`}>
+              {t('projects.labels.modules')}
+            </h3>
+            <Pills text={t(project.modulesKey)} accentClass={`text-${c}-700 dark:text-${c}-200`} />
           </div>
-        )}
+        </Reveal>
+      )}
 
-        {project.videoUrl && (
-          <div className="bg-white/[0.03] border border-white/5 rounded-xl overflow-hidden backdrop-blur-sm">
+      {/* Video */}
+      {project.videoUrl && (
+        <Reveal delay={160}>
+          <div className="rounded-2xl overflow-hidden border border-gray-200 dark:border-white/5">
             <div className="aspect-video w-full">
-              <iframe
-                src={project.videoUrl}
-                className="w-full h-full"
-                title={`Video Demo - ${t(project.titleKey)}`}
+              <iframe src={project.videoUrl} className="w-full h-full"
+                title={`Demo · ${t(project.titleKey)}`}
                 frameBorder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowFullScreen
-              />
+                allowFullScreen />
             </div>
           </div>
-        )}
+        </Reveal>
+      )}
 
-        {project.repoUrl && (
-          <div className="text-center pt-4">
-            <a
-              href={project.repoUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={`inline-block bg-${c}-600 hover:bg-${c}-500 text-white font-semibold px-8 py-3 rounded-xl transition-all duration-200 hover:shadow-lg hover:shadow-${c}-500/25`}
-            >
-              Ver en GitHub →
+      {/* Repo */}
+      {project.repoUrl && (
+        <Reveal delay={200}>
+          <div className="text-center pt-2">
+            <a href={project.repoUrl} target="_blank" rel="noopener noreferrer"
+              className={`inline-block text-white font-semibold px-8 py-3 rounded-xl transition-all duration-200
+                bg-${c}-600 hover:bg-${c}-500`}>
+              {t('projects.labels.viewOnGithub')}
             </a>
           </div>
-        )}
-      </div>
+        </Reveal>
+      )}
     </div>
   );
 }
 
 export default function Projects() {
+  const { t } = useLocale();
   const [selected, setSelected] = useState(null);
 
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [selected]);
+
   if (selected) {
-    const project = projectsData.find((p) => p.id === selected);
+    const project = projectsData.find(p => p.id === selected);
     return (
-      <div className="min-h-screen bg-stone-100">
-        <Header textLogo1="header.logo1" textLogo2="header.logo2" color1="white" color2="indigo" />
-        <main className="flex justify-center items-start w-full pt-[10vh] pb-10 bg-gray-950 min-h-screen">
-          <div className="w-full md:w-[95vw] max-w-7xl px-4 md:px-0">
-            {project && (
-              <ProjectDetail project={project} onBack={() => setSelected(null)} />
-            )}
+      <div className="min-h-screen bg-stone-50 dark:bg-gray-950">
+        <Header textLogo1="header.logo1" textLogo2="header.logo2" />
+        <main className="pt-[10vh] pb-16 overflow-x-hidden">
+          <div className="max-w-6xl mx-auto px-4 md:px-8">
+            {project && <ProjectDetail project={project} onBack={() => setSelected(null)} />}
           </div>
         </main>
-        <Footer text1="footer.cta1" text2="footer.cta2" text3="footer.copyright" color1="gray" color2="indigo" color3="gray" />
+        <Footer text1="footer.cta1" text2="footer.cta2" text3="footer.copyright" />
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-stone-100">
-      <Header textLogo1="header.logo1" textLogo2="header.logo2" color1="white" color2="indigo" />
+    <div className="min-h-screen bg-stone-50 dark:bg-gray-950">
+      <Header textLogo1="header.logo1" textLogo2="header.logo2" />
+      <main className="pt-[10vh] pb-16 overflow-x-hidden">
+        <div className="max-w-6xl mx-auto px-4 md:px-8">
 
-      <main className="flex justify-center items-start w-full pt-[10vh] pb-10 bg-gray-950 min-h-screen">
-        <div className="w-full md:w-[95vw] max-w-7xl px-4 md:px-0">
-          <div className="text-center mb-10">
-            <h1 className="text-3xl md:text-4xl font-extrabold text-white">Proyectos</h1>
-            <p className="text-gray-400 mt-2">Toca un proyecto para ver los detalles</p>
-          </div>
+          <Reveal className="text-center mb-6">
+            <p className="text-xs uppercase tracking-widest font-medium mb-4
+              text-gray-400 dark:text-gray-500">
+              {t('projects.eyebrow')}
+            </p>
+            <h1 className="text-4xl md:text-5xl font-extrabold mb-4
+              text-gray-900 dark:text-white">
+              {t('projects.pageTitle')}
+            </h1>
+            <p className="max-w-xl mx-auto text-sm md:text-base
+              text-gray-500 dark:text-gray-400">
+              {t('projects.subtitle')}
+            </p>
+          </Reveal>
 
-          <div className="grid md:grid-cols-2 gap-6 md:gap-8">
-            {projectsData.map((project) => (
-              <ProjectCard
-                key={project.id}
-                project={project}
-                onSelect={() => setSelected(project.id)}
-              />
-            ))}
-          </div>
+          {projectsData.map(project => (
+            <ProjectSection key={project.id} project={project} onSelect={() => setSelected(project.id)} />
+          ))}
         </div>
       </main>
-
-      <Footer
-        text1="footer.cta1"
-        text2="footer.cta2"
-        text3="footer.copyright"
-        color1="gray"
-        color2="indigo"
-        color3="gray"
-      />
+      <Footer text1="footer.cta1" text2="footer.cta2" text3="footer.copyright" />
     </div>
   );
 }
