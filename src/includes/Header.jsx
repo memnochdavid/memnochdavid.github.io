@@ -102,7 +102,7 @@ function LocaleDropdown() {
 }
 
 function Header({ textLogo1, textLogo2 }) {
-  const { t } = useLocale();
+  const { t, locale } = useLocale();
   const { theme, toggleTheme } = useTheme();
 
   return (
@@ -142,8 +142,8 @@ function Header({ textLogo1, textLogo2 }) {
           {t('header.projects')}
         </a>
 
-        <a href="resources/CV - David Duque Díaz.pdf"
-          download="CV - David Duque Díaz.pdf"
+        <a href={`resources/CV - David Duque Díaz${locale === 'es' ? '' : ` ${locale.toUpperCase()}`}.pdf`}
+          download={`CV - David Duque Díaz${locale === 'es' ? '' : ` ${locale.toUpperCase()}`}.pdf`}
           className="text-sm font-semibold px-3 sm:px-4 py-2 rounded-xl transition-all duration-200
             bg-indigo-600 hover:bg-indigo-500 text-white">
           <span className="sm:hidden">CV ↓</span>

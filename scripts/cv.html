@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="{{LANG}}">
+<head>
+<meta charset="UTF-8" />
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    font-size: 10.5pt;
+    color: #1a1a2e;
+    background: #fff;
+    line-height: 1.45;
+  }
+
+  .page {
+    width: 210mm;
+    min-height: 297mm;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 68mm 1fr;
+  }
+
+  /* ── Sidebar ── */
+  .sidebar {
+    background: #0f172a;
+    color: #e2e8f0;
+    padding: 32px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+  }
+
+  .avatar-block { text-align: center; }
+  .avatar-block img {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #6366f1;
+    margin: 0 auto 12px;
+    display: block;
+  }
+  .avatar-block h1 {
+    font-size: 15pt;
+    font-weight: 700;
+    color: #fff;
+    line-height: 1.25;
+    margin-bottom: 4px;
+  }
+  .avatar-block .role {
+    font-size: 8.5pt;
+    font-weight: 500;
+    color: #6366f1;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+  .divider { height: 1px; background: rgba(255,255,255,0.08); }
+
+  .sidebar-section h2 {
+    font-size: 7pt;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: #6366f1;
+    margin-bottom: 10px;
+  }
+  .skill-group { margin-bottom: 10px; }
+  .skill-group-label {
+    font-size: 7.5pt;
+    color: #94a3b8;
+    margin-bottom: 5px;
+    font-weight: 500;
+  }
+  .tags { display: flex; flex-wrap: wrap; gap: 4px; }
+  .tag {
+    font-size: 7pt;
+    background: rgba(99,102,241,0.15);
+    border: 1px solid rgba(99,102,241,0.25);
+    color: #a5b4fc;
+    padding: 2px 7px;
+    border-radius: 20px;
+  }
+  .lang-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 3px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+  }
+  .lang-name { font-size: 9pt; color: #e2e8f0; }
+  .lang-level { font-size: 7.5pt; color: #6366f1; }
+
+  /* ── Main ── */
+  .main { padding: 32px 28px; display: flex; flex-direction: column; gap: 24px; }
+  .main-section h2 {
+    font-size: 8pt;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: #6366f1;
+    border-bottom: 1.5px solid #e0e7ff;
+    padding-bottom: 4px;
+    margin-bottom: 14px;
+  }
+  .entry { margin-bottom: 13px; position: relative; padding-left: 12px; }
+  .entry::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 6px;
+    width: 5px; height: 5px;
+    border-radius: 50%;
+    background: #6366f1;
+  }
+  .entry-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 8px; }
+  .entry-title { font-size: 10pt; font-weight: 700; color: #0f172a; line-height: 1.3; }
+  .entry-type { font-weight: 400; color: #6366f1; font-size: 8.5pt; }
+  .entry-date { font-size: 7.5pt; color: #6366f1; font-weight: 600; white-space: nowrap; flex-shrink: 0; }
+  .entry-company { font-size: 8.5pt; color: #475569; font-weight: 500; margin-top: 1px; }
+  .entry-desc { font-size: 8.5pt; color: #64748b; margin-top: 3px; line-height: 1.5; }
+  .level-badge {
+    display: inline-block;
+    font-size: 7pt;
+    background: #ede9fe;
+    color: #7c3aed;
+    border-radius: 4px;
+    padding: 1px 6px;
+    margin-left: 6px;
+    font-weight: 600;
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <aside class="sidebar">
+    <div class="avatar-block">
+      <img src="AVATAR_BASE64" alt="David Duque Díaz" />
+      <h1>David<br>Duque Díaz</h1>
+      <div class="role">Full-Stack Developer</div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="sidebar-section">
+      <h2>Tech Stack</h2>
+      <div class="skill-group">
+        <div class="skill-group-label">Backend</div>
+        <div class="tags">
+          <span class="tag">Symfony 8</span><span class="tag">API Platform</span>
+          <span class="tag">PHP 8.4</span><span class="tag">Java</span>
+          <span class="tag">Jakarta EE</span><span class="tag">Python</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-label">Frontend</div>
+        <div class="tags">
+          <span class="tag">React 19</span><span class="tag">JavaScript</span>
+          <span class="tag">Kotlin</span><span class="tag">Jetpack Compose</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-label">{{T_INFRA}}</div>
+        <div class="tags">
+          <span class="tag">Docker</span><span class="tag">Redis</span>
+          <span class="tag">MariaDB</span><span class="tag">MinIO / S3</span>
+          <span class="tag">Mercure</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-label">{{T_OTHER}}</div>
+        <div class="tags">
+          <span class="tag">LLMs</span><span class="tag">Gemini AI</span>
+          <span class="tag">Git</span><span class="tag">SAP</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="sidebar-section">
+      <h2>{{T_LANGUAGES}}</h2>
+      <div class="lang-item"><span class="lang-name">{{T_SPANISH}}</span><span class="lang-level">{{T_NATIVE}}</span></div>
+      <div class="lang-item"><span class="lang-name">{{T_ENGLISH}}</span><span class="lang-level">C1 · {{T_PROFICIENT}}</span></div>
+      <div class="lang-item"><span class="lang-name">{{T_CATALAN}}</span><span class="lang-level">B1 · {{T_BASIC}}</span></div>
+    </div>
+  </aside>
+
+  <main class="main">
+    <div class="main-section">
+      <h2>{{T_EXPERIENCE}}</h2>
+
+      <div class="entry">
+        <div class="entry-header">
+          <div class="entry-title">{{T_SW_DEV}} <span class="entry-type">({{T_INTERNSHIP}} DAW)</span></div>
+          <div class="entry-date">2026</div>
+        </div>
+        <div class="entry-company">Aixa AI · Granada</div>
+        <div class="entry-desc">{{T_AIXA_DESC}}</div>
+      </div>
+
+      <div class="entry">
+        <div class="entry-header">
+          <div class="entry-title">{{T_SW_DEV}} <span class="entry-type">({{T_INTERNSHIP}} DAM)</span></div>
+          <div class="entry-date">2025</div>
+        </div>
+        <div class="entry-company">Gesvision · Baza</div>
+        <div class="entry-desc">{{T_GESVISION_DESC}}</div>
+      </div>
+
+      <div class="entry">
+        <div class="entry-header">
+          <div class="entry-title">{{T_OPERATOR}}</div>
+          <div class="entry-date">2021 – 2023</div>
+        </div>
+        <div class="entry-company">COSENTINO · Almería</div>
+        <div class="entry-desc">{{T_COSENTINO_DESC}}</div>
+      </div>
+
+      <div class="entry">
+        <div class="entry-header">
+          <div class="entry-title">{{T_TAXI}}</div>
+          <div class="entry-date">2017 – 2019</div>
+        </div>
+        <div class="entry-company">{{T_FREELANCE}} · Baza</div>
+      </div>
+
+      <div class="entry">
+        <div class="entry-header">
+          <div class="entry-title">{{T_ENGLISH_TUTOR}}</div>
+          <div class="entry-date">2013 – 2016</div>
+        </div>
+        <div class="entry-company">{{T_FREELANCE}} · Baza</div>
+        <div class="entry-desc">{{T_ENGLISH_TUTOR_DESC}}</div>
+      </div>
+
+      <div class="entry">
+        <div class="entry-header">
+          <div class="entry-title">{{T_IT_TUTOR}}</div>
+          <div class="entry-date">2009 – 2010</div>
+        </div>
+        <div class="entry-company">Colegio Jabalcón · Baza</div>
+        <div class="entry-desc">{{T_IT_TUTOR_DESC}}</div>
+      </div>
+    </div>
+
+    <div class="main-section">
+      <h2>{{T_EDUCATION}}</h2>
+
+      <div class="entry">
+        <div class="entry-header">
+          <div class="entry-title">{{T_DAW_TITLE}} <span class="level-badge">DAW</span></div>
+          <div class="entry-date">2025 – 2026</div>
+        </div>
+        <div class="entry-company">Escuela Arte Granada · {{T_HIGHER_VT}}</div>
+      </div>
+
+      <div class="entry">
+        <div class="entry-header">
+          <div class="entry-title">{{T_DAM_TITLE}} <span class="level-badge">DAM</span></div>
+          <div class="entry-date">2023 – 2025</div>
+        </div>
+        <div class="entry-company">Escuela Arte Granada · {{T_HIGHER_VT}}</div>
+      </div>
+
+      <div class="entry">
+        <div class="entry-header">
+          <div class="entry-title">{{T_ASIR_TITLE}} <span class="level-badge">ASIR</span></div>
+          <div class="entry-date">2008 – 2010</div>
+        </div>
+        <div class="entry-company">IES Pedro Jiménez Montoya · {{T_HIGHER_VT}}</div>
+      </div>
+
+      <div class="entry">
+        <div class="entry-header">
+          <div class="entry-title">{{T_SMR_TITLE}}</div>
+          <div class="entry-date">2005 – 2007</div>
+        </div>
+        <div class="entry-company">Academia Universo · {{T_VT}}</div>
+      </div>
+    </div>
+  </main>
+</div>
+</body>
+</html>
