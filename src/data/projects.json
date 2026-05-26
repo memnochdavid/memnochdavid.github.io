@@ -46,13 +46,16 @@
       { "name": "Android", "icon": "img/icon-android.svg" }
     ],
     "logoUrl": "img/logo-dexter.png",
-    "videoUrl": "https://www.youtube.com/embed/E4Q2EPS4j3s",
+    "videoUrl": "https://www.youtube.com/embed/Pg8YSEanYJQ",
     "repoUrl": "",
     "color": "red",
+    "screenshotAspect": "portrait",
     "screenshots": [
-      "img/projects/placeholder.webp",
-      "img/projects/placeholder2.webp",
-      "img/projects/placeholder3.webp"
+      "img/projects/dexter/dexter-lista-filtros.jpeg",
+      "img/projects/dexter/dexter-lista.jpeg",
+      "img/projects/dexter/dexter-ficha-detalle.jpeg",
+      "img/projects/dexter/dexter-vista-fullscreen.jpeg",
+      "img/projects/dexter/dexter-camara.png"
     ]
   }
 ]

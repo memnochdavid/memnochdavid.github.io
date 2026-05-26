@@ -49,42 +49,70 @@ function Pills({ text, accentClass }) {
   );
 }
 
-const STACK_CONFIGS = [
-  { z: 1, tx: 56, ty: 28, rot: 5,   opacity: 0.45, delay: 0 },
-  { z: 2, tx: 28, ty: 14, rot: 2.5, opacity: 0.68, delay: 100 },
-  { z: 3, tx: 0,  ty: 0,  rot: 0,   opacity: 1,    delay: 200 },
+const STACK_CONFIGS_LANDSCAPE = [
+  { z: 1, tx: 128, ty: 64, rot: 8,   opacity: 0.25, delay: 0 },
+  { z: 2, tx: 96,  ty: 48, rot: 6,   opacity: 0.35, delay: 150 },
+  { z: 3, tx: 64,  ty: 32, rot: 5,   opacity: 0.55, delay: 300 },
+  { z: 4, tx: 32,  ty: 16, rot: 2.5, opacity: 0.75, delay: 450 },
+  { z: 5, tx: 0,   ty: 0,  rot: 0,   opacity: 1,    delay: 600 },
 ];
 
-function StackedScreenshots({ images, inView, interactive = false }) {
+const STACK_CONFIGS_PORTRAIT = [
+  { z: 1, tx: 160, ty: 20, rot: 8,   opacity: 0.25, delay: 0 },
+  { z: 2, tx: 120, ty: 15, rot: 6,   opacity: 0.35, delay: 150 },
+  { z: 3, tx: 80,  ty: 10, rot: 4,   opacity: 0.55, delay: 300 },
+  { z: 4, tx: 40,  ty: 5,  rot: 2,   opacity: 0.75, delay: 450 },
+  { z: 5, tx: 0,   ty: 0,  rot: 0,   opacity: 1,    delay: 600 },
+];
+
+function StackedScreenshots({ images, inView, interactive = false, portrait = false }) {
   const [activeIdx, setActiveIdx] = useState(0);
+  const [hasEntered, setHasEntered] = useState(false);
+
+  const paddingTop = portrait ? '222%' : '62%';
+  const wrapStyle = portrait ? { maxWidth: 260, margin: '0 auto' } : {};
+  const CONFIGS = portrait ? STACK_CONFIGS_PORTRAIT : STACK_CONFIGS_LANDSCAPE;
+
+  // Once the entry stagger completes, remove delays so cycling is instant
+  useEffect(() => {
+    if (!inView || hasEntered) return;
+    const maxDelay = CONFIGS[CONFIGS.length - 1].delay;
+    const t = setTimeout(() => setHasEntered(true), maxDelay + 800);
+    return () => clearTimeout(t);
+  }, [inView]); // eslint-disable-line
 
   if (!images?.length) {
     return (
-      <div className="relative w-full rounded-2xl bg-gray-200 dark:bg-gray-800/40 border border-gray-200 dark:border-white/5"
-        style={{ paddingTop: '62%' }} />
+      <div style={wrapStyle}>
+        <div className="relative w-full rounded-2xl bg-gray-200 dark:bg-gray-800/40 border border-gray-200 dark:border-white/5"
+          style={{ paddingTop }} />
+      </div>
     );
   }
 
   const total = images.length;
-  const showCount = Math.min(total, 3);
-  const configs = STACK_CONFIGS.slice(STACK_CONFIGS.length - showCount);
-
-  const getImg = (stackPos) =>
-    interactive
-      ? images[(activeIdx + stackPos) % total]
-      : images[stackPos % total];
+  const showCount = Math.min(total, CONFIGS.length);
 
   return (
-    <div className="relative select-none">
-      <div className="relative w-full" style={{ paddingTop: '62%' }}>
-        {configs.map((cfg, i) => {
-          const stackPos = showCount - 1 - i;
-          const isFront = stackPos === 0;
-          const src = getImg(stackPos);
+    <div className="relative select-none" style={wrapStyle}>
+      <div className="relative w-full" style={{ paddingTop }}>
+        {images.map((src, imgIdx) => {
+          // Each image has a stable key → its card persists and animates between positions
+          const stackSlot = (imgIdx - activeIdx + total) % total;
+          const isVisible = stackSlot < showCount;
+          const cfg = isVisible ? CONFIGS[CONFIGS.length - 1 - stackSlot] : null;
+          const isFront = stackSlot === 0;
+
+          const tx      = isVisible ? cfg.tx  : CONFIGS[0].tx + 80;
+          const ty      = isVisible ? cfg.ty  : CONFIGS[0].ty;
+          const rot     = isVisible ? cfg.rot : CONFIGS[0].rot + 2;
+          const opacity = isVisible ? cfg.opacity : 0;
+          const zIndex  = isVisible ? cfg.z : 0;
+          const delay   = !hasEntered && isVisible ? cfg.delay : 0;
 
           return (
             <div
-              key={`card-${i}`}
+              key={imgIdx}
               onClick={isFront && interactive && total > 1
                 ? () => setActiveIdx(p => (p + 1) % total)
                 : undefined}
@@ -92,13 +120,13 @@ function StackedScreenshots({ images, inView, interactive = false }) {
                 isFront && interactive && total > 1 ? 'cursor-pointer' : ''
               }`}
               style={{
-                zIndex: cfg.z,
-                boxShadow: '0 24px 64px -12px rgba(0,0,0,0.5), 0 4px 16px rgba(0,0,0,0.3)',
-                transform: inView
-                  ? `translate(${cfg.tx}px, ${cfg.ty}px) rotate(${cfg.rot}deg)`
-                  : `translate(${cfg.tx + 90}px, ${cfg.ty}px) rotate(${cfg.rot}deg)`,
-                opacity: inView ? cfg.opacity : 0,
-                transition: `transform 0.85s cubic-bezier(0.16,1,0.3,1) ${cfg.delay}ms, opacity 0.7s ease ${cfg.delay}ms`,
+                zIndex,
+                boxShadow: isVisible ? '0 24px 64px -12px rgba(0,0,0,0.5), 0 4px 16px rgba(0,0,0,0.3)' : 'none',
+                transform: !inView
+                  ? `translate(${tx + 120}px, ${ty}px) rotate(${rot}deg)`
+                  : `translate(${tx}px, ${ty}px) rotate(${rot}deg)`,
+                opacity: !inView ? 0 : opacity,
+                transition: `transform 0.55s cubic-bezier(0.16,1,0.3,1) ${delay}ms, opacity 0.45s ease ${delay}ms`,
               }}
             >
               <img src={src} alt="" className="w-full h-full object-cover" />
@@ -189,7 +217,8 @@ function ProjectSection({ project, onSelect }) {
           opacity: inView ? 1 : 0,
           transition: 'opacity 0.5s ease 0ms',
         }}>
-          <StackedScreenshots images={project.screenshots || []} inView={inView} />
+          <StackedScreenshots images={project.screenshots || []} inView={inView} interactive={true}
+            portrait={project.screenshotAspect === 'portrait'} />
         </div>
       </div>
     </section>
@@ -244,49 +273,114 @@ function ProjectDetail({ project, onBack }) {
           opacity: heroInView ? 1 : 0,
           transition: 'opacity 0.5s ease 0ms',
         }}>
-          <StackedScreenshots images={project.screenshots || []} inView={heroInView} interactive={true} />
+          <StackedScreenshots images={project.screenshots || []} inView={heroInView} interactive={true}
+            portrait={project.screenshotAspect === 'portrait'} />
         </div>
       </div>
 
-      {/* Highlights */}
-      <Reveal>
-        <div className="rounded-2xl p-6
-          bg-white border border-gray-200
-          dark:bg-white/[0.03] dark:border-white/5">
-          <h3 className="text-xs uppercase tracking-wider font-semibold mb-4
-            text-gray-400 dark:text-white/50">
-            {t('projects.labels.highlights')}
-          </h3>
-          <Pills text={t(project.highlightsKey)} accentClass={`text-${c}-700 dark:text-${c}-300`} />
-        </div>
-      </Reveal>
+      {project.screenshotAspect === 'portrait' && project.videoUrl ? (
+        /* Portrait layout: highlights + stack on the left, vertical video on the right */
+        <Reveal>
+          <div className="flex flex-col md:flex-row gap-6 items-start">
 
-      {/* Stack */}
-      <Reveal delay={60}>
-        <div className="rounded-2xl p-6
-          bg-white border border-gray-200
-          dark:bg-white/[0.03] dark:border-white/5">
-          <h3 className="text-xs uppercase tracking-wider font-semibold mb-4
-            text-gray-400 dark:text-white/50">
-            {t('projects.labels.stack')}
-          </h3>
-          <div className="flex flex-wrap gap-3">
-            {project.stack.map(tech => (
-              <div key={tech.name}
-                className="flex items-center gap-2 px-3 py-2 rounded-lg transition-colors
-                  bg-gray-100 border border-gray-200 hover:bg-gray-200
-                  dark:bg-white/5 dark:border-white/5 dark:hover:bg-white/10">
-                <img className="w-5 h-5 object-contain" src={tech.icon} alt={tech.name} />
-                <span className="text-sm text-gray-700 dark:text-gray-300">{tech.name}</span>
+            <div className="flex-1 flex flex-col gap-6">
+              <div className="rounded-2xl p-6
+                bg-white border border-gray-200
+                dark:bg-white/[0.03] dark:border-white/5">
+                <h3 className="text-xs uppercase tracking-wider font-semibold mb-4
+                  text-gray-400 dark:text-white/50">
+                  {t('projects.labels.highlights')}
+                </h3>
+                <Pills text={t(project.highlightsKey)} accentClass={`text-${c}-700 dark:text-${c}-300`} />
               </div>
-            ))}
-          </div>
-        </div>
-      </Reveal>
 
-      {/* Modules */}
+              <div className="rounded-2xl p-6
+                bg-white border border-gray-200
+                dark:bg-white/[0.03] dark:border-white/5">
+                <h3 className="text-xs uppercase tracking-wider font-semibold mb-4
+                  text-gray-400 dark:text-white/50">
+                  {t('projects.labels.stack')}
+                </h3>
+                <div className="flex flex-wrap gap-3">
+                  {project.stack.map(tech => (
+                    <div key={tech.name}
+                      className="flex items-center gap-2 px-3 py-2 rounded-lg transition-colors
+                        bg-gray-100 border border-gray-200 hover:bg-gray-200
+                        dark:bg-white/5 dark:border-white/5 dark:hover:bg-white/10">
+                      <img className="w-5 h-5 object-contain" src={tech.icon} alt={tech.name} />
+                      <span className="text-sm text-gray-700 dark:text-gray-300">{tech.name}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            <div className="w-full md:w-64 shrink-0 rounded-2xl overflow-hidden border border-gray-200 dark:border-white/5 aspect-[9/16]">
+              <iframe src={project.videoUrl} className="w-full h-full block"
+                title={`Demo · ${t(project.titleKey)}`}
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowFullScreen />
+            </div>
+
+          </div>
+        </Reveal>
+      ) : (
+        /* Default layout: stacked sections */
+        <>
+          <Reveal>
+            <div className="rounded-2xl p-6
+              bg-white border border-gray-200
+              dark:bg-white/[0.03] dark:border-white/5">
+              <h3 className="text-xs uppercase tracking-wider font-semibold mb-4
+                text-gray-400 dark:text-white/50">
+                {t('projects.labels.highlights')}
+              </h3>
+              <Pills text={t(project.highlightsKey)} accentClass={`text-${c}-700 dark:text-${c}-300`} />
+            </div>
+          </Reveal>
+
+          <Reveal delay={60}>
+            <div className="rounded-2xl p-6
+              bg-white border border-gray-200
+              dark:bg-white/[0.03] dark:border-white/5">
+              <h3 className="text-xs uppercase tracking-wider font-semibold mb-4
+                text-gray-400 dark:text-white/50">
+                {t('projects.labels.stack')}
+              </h3>
+              <div className="flex flex-wrap gap-3">
+                {project.stack.map(tech => (
+                  <div key={tech.name}
+                    className="flex items-center gap-2 px-3 py-2 rounded-lg transition-colors
+                      bg-gray-100 border border-gray-200 hover:bg-gray-200
+                      dark:bg-white/5 dark:border-white/5 dark:hover:bg-white/10">
+                    <img className="w-5 h-5 object-contain" src={tech.icon} alt={tech.name} />
+                    <span className="text-sm text-gray-700 dark:text-gray-300">{tech.name}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </Reveal>
+
+          {project.videoUrl && (
+            <Reveal delay={120}>
+              <div className="rounded-2xl overflow-hidden border border-gray-200 dark:border-white/5">
+                <div className="aspect-video w-full">
+                  <iframe src={project.videoUrl} className="w-full h-full"
+                    title={`Demo · ${t(project.titleKey)}`}
+                    frameBorder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowFullScreen />
+                </div>
+              </div>
+            </Reveal>
+          )}
+        </>
+      )}
+
+      {/* Modules — always full width */}
       {project.modulesKey && (
-        <Reveal delay={120}>
+        <Reveal delay={60}>
           <div className="rounded-2xl p-6
             bg-white border border-gray-200
             dark:bg-white/[0.03] dark:border-white/5">
@@ -294,21 +388,6 @@ function ProjectDetail({ project, onBack }) {
               {t('projects.labels.modules')}
             </h3>
             <Pills text={t(project.modulesKey)} accentClass={`text-${c}-700 dark:text-${c}-200`} />
-          </div>
-        </Reveal>
-      )}
-
-      {/* Video */}
-      {project.videoUrl && (
-        <Reveal delay={160}>
-          <div className="rounded-2xl overflow-hidden border border-gray-200 dark:border-white/5">
-            <div className="aspect-video w-full">
-              <iframe src={project.videoUrl} className="w-full h-full"
-                title={`Demo · ${t(project.titleKey)}`}
-                frameBorder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowFullScreen />
-            </div>
           </div>
         </Reveal>
       )}
