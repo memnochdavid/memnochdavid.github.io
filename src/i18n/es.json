@@ -68,12 +68,12 @@
       "extras": ["Uso de SAP"]
     },
     {
-      "title": "Desarrollador",
+      "title": "Desarrollador de Software (prácticas)",
       "company": "Gesvision",
-      "description": "Prácticas del ciclo DAM. Desarrollo con Java, Jakarta EE y Hibernate."
+      "description": "Desarrollo con Java, Jakarta EE y Hibernate."
     },
     {
-      "title": "Desarrollador de Software",
+      "title": "Desarrollador de Software (prácticas)",
       "company": "Aixa AI",
       "description": "Desarrollo full-stack con React y Python. Integración de LLMs."
     }

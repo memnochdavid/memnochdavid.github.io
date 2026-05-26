@@ -68,12 +68,12 @@
       "extras": ["Ús de SAP"]
     },
     {
-      "title": "Desenvolupador",
+      "title": "Desenvolupador de Programari (pràctiques)",
       "company": "Gesvision",
-      "description": "Pràctiques del cicle DAM. Desenvolupament amb Java, Jakarta EE i Hibernate."
+      "description": "Desenvolupament amb Java, Jakarta EE i Hibernate."
     },
     {
-      "title": "Desenvolupador de Programari",
+      "title": "Desenvolupador de Programari (pràctiques)",
       "company": "Aixa AI",
       "description": "Desenvolupament full-stack amb React i Python. Integració de LLMs."
     }
