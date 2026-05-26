@@ -85,13 +85,14 @@
       "highlights": "Highlights",
       "stack": "Stack",
       "modules": "Módulos",
-      "viewOnGithub": "Ver en GitHub →"
+      "viewOnGithub": "Ver en GitHub →",
+      "gallery": "Capturas de pantalla"
     },
     "loggex": {
-      "title": "Loggex",
+      "title": "Loggex Machina",
       "subtitle": "Plataforma integral de gestión académica",
-      "description": "Plataforma SaaS multi-tenant para la gestión integral de centros educativos españoles: desde la estructura del centro y las matriculaciones hasta la impartición diaria de clases, calificaciones y comunicación entre roles. El núcleo técnico más exigente es el motor de horarios — solvers propios (bin-packing + iterativo) que generan cuadros horarios completos respetando restricciones legales de jornada, cuotas semanales heterogéneas y un modelo de excepciones granular semana a semana. Se integra con el catálogo oficial BOE para materializar automáticamente más de 230 itinerarios formativos y ~2.230 materias, y cada centro dispone de theming dinámico con más de 80 variables CSS propias. 37 entidades, 7 servicios Docker, tiempo real con Mercure SSE en 39 recursos, cola de jobs asíncronos con Redis y almacenamiento en MinIO S3 — en 5 idiomas.",
-      "highlights": "37 entidades · Multi-tenant por centro · Motor de horarios con solvers propios · Tiempo real con Mercure SSE · Catálogo oficial BOE (230+ itinerarios, ~2.230 materias) · Theming dinámico (80+ variables CSS/centro) · 5 idiomas · Jobs asíncronos con Redis · Exportación PDF · Roles: Superadmin, Admin, Profesor, Alumno",
+      "description": "Sistema SaaS multi-tenant de gestión académica integral para centros educativos. Cubre desde la estructura del centro hasta la entrega de clases: matriculaciones, horarios con motor de resolución propio, asistencia, tareas, calificaciones y comunicación en tiempo real. Construido con Symfony 8 + React 19, desplegado en Docker con almacenamiento S3, cola de trabajos asíncrona y catálogo oficial BOE con 230 itinerarios y ~2.230 materias.",
+      "highlights": "37 entidades · Multi-tenant por centro · Motor de horarios con solvers propios · Tiempo real con Mercure SSE · Catálogo oficial BOE (230 itinerarios, ~2.230 materias) · Theming dinámico (80+ variables CSS/centro) · 5 idiomas · Jobs asíncronos con Redis · Roles: Superadmin, Admin, Profesor, Alumno · Exportación PDF",
       "modules": "Centro · Itinerarios y materias · Grupos y matrículas · Editor de horarios · Periodos lectivos · Asistencia · Tareas y entregas · Calificaciones · Temarios · Mensajería · Comunicados · Notificaciones · Catálogo oficial"
     },
     "dexter": {

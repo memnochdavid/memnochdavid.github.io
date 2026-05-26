@@ -85,13 +85,14 @@
       "highlights": "Highlights",
       "stack": "Stack",
       "modules": "Mòduls",
-      "viewOnGithub": "Veure a GitHub →"
+      "viewOnGithub": "Veure a GitHub →",
+      "gallery": "Captures de pantalla"
     },
     "loggex": {
-      "title": "Loggex",
+      "title": "Loggex Machina",
       "subtitle": "Plataforma integral de gestió acadèmica",
-      "description": "Plataforma SaaS multi-tenant per a la gestió integral de centres educatius espanyols: des de l'estructura del centre i les matriculacions fins a la impartició diària de classes, qualificacions i comunicació entre rols. El nucli tècnic més exigent és el motor d'horaris — solvers propis (bin-packing + iteratiu) que generen quadres horaris complets respectant restriccions legals de jornada, quotes setmanals heterogènies i un model d'excepcions granular setmana a setmana. S'integra amb el catàleg oficial BOE per materialitzar automàticament més de 230 itineraris formatius i ~2.230 matèries, i cada centre disposa de theming dinàmic amb més de 80 variables CSS pròpies. 37 entitats, 7 serveis Docker, temps real amb Mercure SSE en 39 recursos, cua de jobs asíncrons amb Redis i emmagatzematge a MinIO S3 — en 5 idiomes.",
-      "highlights": "37 entitats · Multi-tenant per centre · Motor d'horaris amb solvers propis · Temps real amb Mercure SSE · Catàleg oficial BOE (230+ itineraris, ~2.230 matèries) · Theming dinàmic (80+ variables CSS/centre) · 5 idiomes · Jobs asíncrons amb Redis · Exportació PDF · Rols: Superadmin, Admin, Professor, Alumne",
+      "description": "Sistema SaaS multi-tenant de gestió acadèmica integral per a centres educatius. Cobreix des de l'estructura del centre fins a la impartició de classes: matriculacions, horaris amb motor de resolució propi, assistència, tasques, qualificacions i comunicació en temps real. Construït amb Symfony 8 + React 19, desplegat en Docker amb emmagatzematge S3, cua de treballs asíncrona i catàleg oficial BOE amb 230 itineraris i ~2.230 matèries.",
+      "highlights": "37 entitats · Multi-tenant per centre · Motor d'horaris amb solvers propis · Temps real amb Mercure SSE · Catàleg oficial BOE (230 itineraris, ~2.230 matèries) · Theming dinàmic (80+ variables CSS/centre) · 5 idiomes · Jobs asíncrons amb Redis · Rols: Superadmin, Admin, Professor, Alumne · Exportació PDF",
       "modules": "Centre · Itineraris i matèries · Grups i matrícules · Editor d'horaris · Períodes lectius · Assistència · Tasques i lliuraments · Qualificacions · Temaris · Missatgeria · Comunicats · Notificacions · Catàleg oficial"
     },
     "dexter": {

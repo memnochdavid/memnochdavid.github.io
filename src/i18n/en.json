@@ -85,13 +85,14 @@
       "highlights": "Highlights",
       "stack": "Stack",
       "modules": "Modules",
-      "viewOnGithub": "View on GitHub →"
+      "viewOnGithub": "View on GitHub →",
+      "gallery": "Screenshots"
     },
     "loggex": {
-      "title": "Loggex",
+      "title": "Loggex Machina",
       "subtitle": "Academic Management Platform",
-      "description": "A multi-tenant SaaS platform for comprehensive school management in the Spanish educational system, covering the full academic lifecycle: enrolment, timetabling, daily teaching delivery, grading and role-based communication. Its most technically demanding component is the scheduling engine — purpose-built constraint solvers (bin-packing and iterative) that generate complete weekly timetables while respecting legal working-hour limits, heterogeneous weekly quotas and a granular week-by-week exception model. An automated integration with the official BOE catalogue seeds over 230 vocational programmes and ~2,230 subjects with zero manual entry, and each centre gets its own dynamic theming system with 80+ CSS variables. 37 entities, 7 Docker services, Mercure SSE real-time across 39 resources, async job queue on Redis and MinIO S3 storage — in 5 languages.",
-      "highlights": "37 entities · Multi-tenant per centre · Scheduling engine with custom solvers · Real-time with Mercure SSE · Official BOE catalog (230+ programmes, ~2,230 subjects) · Dynamic theming (80+ CSS vars/centre) · 5 languages · Async jobs with Redis · PDF export · Roles: Superadmin, Admin, Teacher, Student",
+      "description": "A multi-tenant SaaS platform for comprehensive school management. Covers the full academic cycle: enrolment, constraint-based timetabling, attendance, assignments, grading and real-time messaging. Built with Symfony 8 + React 19, deployed on Docker with S3 storage, async job queue and an official BOE catalogue of 230 programmes and ~2,230 subjects.",
+      "highlights": "37 entities · Multi-tenant per centre · Scheduling engine with custom solvers · Real-time with Mercure SSE · Official BOE catalogue (230 programmes, ~2,230 subjects) · Dynamic theming (80+ CSS vars/centre) · 5 languages · Async jobs with Redis · Roles: Superadmin, Admin, Teacher, Student · PDF export",
       "modules": "Centre · Programmes & subjects · Groups & enrolment · Schedule editor · Teaching periods · Attendance · Tasks & assignments · Grading · Syllabi · Messaging · Announcements · Notifications · Official catalogue"
     },
     "dexter": {

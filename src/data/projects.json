@@ -9,23 +9,41 @@
     "highlightsKey": "projects.loggex.highlights",
     "modulesKey": "projects.loggex.modules",
     "stack": [
-      { "name": "Symfony", "icon": "img/icon-symfony.svg" },
-      { "name": "React", "icon": "img/icon-react.svg" },
-      { "name": "PHP", "icon": "img/icon-php.svg" },
-      { "name": "MariaDB", "icon": "img/icon-mariadb.svg" },
-      { "name": "Tailwind", "icon": "img/icon-tailwind.svg" },
-      { "name": "Vite", "icon": "img/icon-vite.svg" },
-      { "name": "JavaScript", "icon": "img/icon-js.svg" },
-      { "name": "Node.js", "icon": "img/icon-nodejs.svg" }
+      { "name": "Symfony 8",    "icon": "img/icon-symfony.svg" },
+      { "name": "API Platform", "icon": "img/icon-apiplatform.svg" },
+      { "name": "React 19",     "icon": "img/icon-react.svg" },
+      { "name": "PHP 8.4",      "icon": "img/icon-php.svg" },
+      { "name": "MariaDB",      "icon": "img/icon-mariadb.svg" },
+      { "name": "Docker",       "icon": "img/icon-docker.svg" },
+      { "name": "Redis",        "icon": "img/icon-redis.svg" },
+      { "name": "MinIO / S3",   "icon": "img/icon-minio.svg" }
     ],
     "logoUrl": "img/logo-loggex.png",
     "videoUrl": "",
     "repoUrl": "",
     "color": "sky",
     "screenshots": [
-      "img/projects/placeholder.webp",
-      "img/projects/placeholder2.webp",
-      "img/projects/placeholder3.webp"
+      "img/projects/loggex/temas/loggex-tema-1.png",
+      "img/projects/loggex/temas/loggex-tema-2.png",
+      "img/projects/loggex/temas/loggex-tema-3.png",
+      "img/projects/loggex/temas/loggex-tema-4-animado.png"
+    ],
+    "screenshotsMobile": [
+      "img/projects/loggex/mobile/temas/loggex-tema-1-mobile.png",
+      "img/projects/loggex/mobile/temas/loggex-tema-2-mobile.png",
+      "img/projects/loggex/mobile/temas/loggex-tema-3-mobile.png",
+      "img/projects/loggex/mobile/temas/loggex-tema-4-animado-mobile.png"
+    ],
+    "gallery": [
+      { "desktop": "img/projects/loggex/loggex-login.png",               "mobile": "img/projects/loggex/mobile/loggex-login-mobile.png" },
+      { "desktop": "img/projects/loggex/alumno/loggex-dashboard.png",    "mobile": "img/projects/loggex/mobile/alumno/loggex-dashboard-mobile.png" },
+      { "desktop": "img/projects/loggex/alumno/loggex-horario.png",      "mobile": "img/projects/loggex/mobile/alumno/loggex-horario-mobile.png" },
+      { "desktop": "img/projects/loggex/alumno/loggex-notas.png",        "mobile": "img/projects/loggex/mobile/alumno/loggex-notas-mobile.png" },
+      { "desktop": "img/projects/loggex/alumno/loggex-asistencia.png",   "mobile": "img/projects/loggex/mobile/alumno/loggex-asistencia-mobile.png" },
+      { "desktop": "img/projects/loggex/alumno/loggex-temario.png",      "mobile": "img/projects/loggex/mobile/alumno/loggex-temario-mobile.png" },
+      { "desktop": "img/projects/loggex/loggex-mensajes.png",            "mobile": "img/projects/loggex/mobile/loggex-mensajes-mobile.png" },
+      { "desktop": "img/projects/loggex/profe/loggex-ponderaciones.png", "mobile": "img/projects/loggex/mobile/profe/loggex-ponderaciones-mobile.png" },
+      { "desktop": "img/projects/loggex/personalizacion.png" }
     ]
   },
   {
