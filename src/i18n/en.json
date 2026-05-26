@@ -46,6 +46,18 @@
   ],
   "experience": [
     {
+      "title": "Software Developer",
+      "company": "Aixa AI",
+      "description": "Full-stack development with React, Python and LLM integration.",
+      "extras": ["React", "Python", "LLM"]
+    },
+    {
+      "title": "Developer",
+      "company": "Gesvision",
+      "description": "DAM internship. Development with Java, Jakarta EE and Hibernate.",
+      "extras": ["Java", "Jakarta EE", "Hibernate"]
+    },
+    {
       "title": "Tutor",
       "company": "Colegio Jabalcón",
       "description": "IT Instructor (\"Introduction to Computing\")"

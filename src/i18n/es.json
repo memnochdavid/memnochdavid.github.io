@@ -46,6 +46,18 @@
   ],
   "experience": [
     {
+      "title": "Desarrollador de software",
+      "company": "Aixa AI",
+      "description": "Desarrollo full-stack con React, Python e integración de LLMs.",
+      "extras": ["React", "Python", "LLM"]
+    },
+    {
+      "title": "Desarrollador",
+      "company": "Gesvision",
+      "description": "Prácticas del ciclo DAM. Desarrollo con Java, Jakarta EE, Hibernate.",
+      "extras": ["Java", "Jakarta EE", "Hibernate"]
+    },
+    {
       "title": "Tutor",
       "company": "Colegio Jabalcón",
       "description": "Instructor de informática (\"Introducción a la Informática\")"
