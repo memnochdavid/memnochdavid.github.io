@@ -280,7 +280,7 @@ export default function Home() {
                 key={entry.id}
                 title={t(entry.titleKey)}
                 subtitle={t(entry.centerKey)}
-                years={`${yearOf(entry.startDate)} – ${yearOf(entry.endDate)}`}
+                years={`${yearOf(entry.startDate)} – ${yearOf(entry.endDate) || t('sections.present')}`}
                 location={entry.location}
                 badge={t(entry.levelKey)}
                 delay={i * 80}
@@ -301,7 +301,7 @@ export default function Home() {
                 title={t(entry.titleKey)}
                 subtitle={entry.companyKey && t(entry.companyKey) ? t(entry.companyKey) : null}
                 description={t(entry.descriptionKey)}
-                years={`${yearOf(entry.startDate)} – ${yearOf(entry.endDate)}`}
+                years={`${yearOf(entry.startDate)} – ${yearOf(entry.endDate) || t('sections.present')}`}
                 location={entry.location}
                 delay={i * 80}
               />

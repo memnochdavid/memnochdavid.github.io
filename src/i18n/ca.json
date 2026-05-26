@@ -15,6 +15,7 @@
     "experience": "Experiència laboral",
     "languages": "Idiomes",
     "skills": "Habilitats",
+    "present": "actualitat",
     "eyebrow": {
       "techStack": "Tech Stack",
       "education": "Formació",
@@ -46,18 +47,6 @@
   ],
   "experience": [
     {
-      "title": "Desenvolupador de programari",
-      "company": "Aixa AI",
-      "description": "Desenvolupament full-stack amb React, Python i integració de LLMs.",
-      "extras": ["React", "Python", "LLM"]
-    },
-    {
-      "title": "Desenvolupador",
-      "company": "Gesvision",
-      "description": "Pràctiques del cicle DAM. Desenvolupament amb Java, Jakarta EE i Hibernate.",
-      "extras": ["Java", "Jakarta EE", "Hibernate"]
-    },
-    {
       "title": "Tutor",
       "company": "Colegio Jabalcón",
       "description": "Instructor d'informàtica (\"Introducció a la Informàtica\")"
@@ -77,6 +66,16 @@
       "company": "",
       "description": "Responsable d'una línia de producció",
       "extras": ["Ús de SAP"]
+    },
+    {
+      "title": "Desenvolupador",
+      "company": "Gesvision",
+      "description": "Pràctiques del cicle DAM. Desenvolupament amb Java, Jakarta EE i Hibernate."
+    },
+    {
+      "title": "Desenvolupador de Programari",
+      "company": "Aixa AI",
+      "description": "Desenvolupament full-stack amb React i Python. Integració de LLMs."
     }
   ],
   "languages": {

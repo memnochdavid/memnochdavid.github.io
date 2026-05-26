@@ -1,5 +1,23 @@
 [
   {
+    "id": 6,
+    "titleKey": "experience.5.title",
+    "companyKey": "experience.5.company",
+    "descriptionKey": "experience.5.description",
+    "startDate": "01/03/2026",
+    "endDate": "",
+    "location": "Granada, Spain"
+  },
+  {
+    "id": 5,
+    "titleKey": "experience.4.title",
+    "companyKey": "experience.4.company",
+    "descriptionKey": "experience.4.description",
+    "startDate": "01/03/2025",
+    "endDate": "01/06/2025",
+    "location": "Baza, Spain"
+  },
+  {
     "id": 4,
     "titleKey": "experience.3.title",
     "companyKey": "experience.3.company",
