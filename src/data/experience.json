@@ -6,7 +6,12 @@
     "descriptionKey": "experience.5.description",
     "startDate": "01/03/2026",
     "endDate": "15/06/2026",
-    "location": "Granada, Spain"
+    "location": "Granada, Spain",
+    "recommendation": {
+      "es": "resources/AIXA_Carta_Recomendacion_David_Duque_ES.pdf",
+      "en": "resources/AIXA_Letter_of_Recommendation_David_Duque_EN.pdf",
+      "ca": "resources/AIXA_Carta_Recomendacion_David_Duque_ES.pdf"
+    }
   },
   {
     "id": 5,

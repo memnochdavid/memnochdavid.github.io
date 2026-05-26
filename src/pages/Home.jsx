@@ -56,6 +56,16 @@ function PhoneIcon() {
   );
 }
 
+function FileIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75"
+      strokeLinecap="round" strokeLinejoin="round" className="w-3 h-3 flex-shrink-0">
+      <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+      <polyline points="14 2 14 8 20 8"/>
+    </svg>
+  );
+}
+
 function PinIcon() {
   return (
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75"
@@ -101,7 +111,7 @@ function SkillChip({ skill }) {
   );
 }
 
-function TimelineEntry({ title, subtitle, description, years, location, badge, delay = 0 }) {
+function TimelineEntry({ title, subtitle, description, years, location, badge, recommendationUrl, recommendationLabel, delay = 0 }) {
   const [ref, inView] = useInView(0.1);
   return (
     <div ref={ref} className="relative pl-8" style={{
@@ -151,6 +161,13 @@ function TimelineEntry({ title, subtitle, description, years, location, badge, d
               {badge}
             </span>
           )}
+          {recommendationUrl && (
+            <a href={recommendationUrl} target="_blank" rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 text-xs font-medium
+                text-indigo-600 dark:text-indigo-400 hover:underline">
+              <FileIcon /> {recommendationLabel}
+            </a>
+          )}
         </div>
       </div>
     </div>
@@ -158,7 +175,7 @@ function TimelineEntry({ title, subtitle, description, years, location, badge, d
 }
 
 export default function Home() {
-  const { t } = useLocale();
+  const { t, locale } = useLocale();
 
   const skillsByCategory = SKILL_CATEGORIES
     .map(cat => ({ ...cat, skills: skillsData.filter(s => s.category === cat.id) }))
@@ -303,6 +320,8 @@ export default function Home() {
                 description={t(entry.descriptionKey)}
                 years={`${yearOf(entry.startDate)} – ${yearOf(entry.endDate) || t('sections.present')}`}
                 location={entry.location}
+                recommendationUrl={entry.recommendation?.[locale]}
+                recommendationLabel={t('sections.recommendation')}
                 delay={i * 80}
               />
             ))}

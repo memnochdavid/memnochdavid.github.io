@@ -1,6 +1,12 @@
 import { useLocale } from '../i18n/context.jsx';
 import profileData from '../data/profile.json';
 
+const RECOMMENDATIONS = {
+  es: 'resources/AIXA_Carta_Recomendacion_David_Duque_ES.pdf',
+  en: 'resources/AIXA_Letter_of_Recommendation_David_Duque_EN.pdf',
+  ca: 'resources/AIXA_Carta_Recomendacion_David_Duque_ES.pdf',
+};
+
 const STACK = [
   { src: '/img/icon-vite.svg',     alt: 'Vite' },
   { src: '/img/icon-react.svg',    alt: 'React' },
@@ -8,7 +14,7 @@ const STACK = [
 ];
 
 function Footer({ text1, text2, text3 }) {
-  const { t } = useLocale();
+  const { t, locale } = useLocale();
 
   return (
     <footer className="bg-gray-900 border-t border-white/5">
@@ -30,6 +36,22 @@ function Footer({ text1, text2, text3 }) {
               whitespace-nowrap group flex-shrink-0">
             {profileData.email}
             <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
+          </a>
+        </div>
+      </div>
+
+      {/* Recommendation letters */}
+      <div className="border-t border-white/5">
+        <div className="max-w-6xl mx-auto px-4 md:px-8 py-4 flex items-center gap-3">
+          <span className="text-xs text-gray-600">{t('sections.recommendation')} · Aixa AI</span>
+          <a href={RECOMMENDATIONS[locale]} target="_blank" rel="noopener noreferrer"
+            className="inline-flex items-center gap-1 text-xs font-medium text-indigo-400 hover:text-indigo-300 transition-colors">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75"
+              strokeLinecap="round" strokeLinejoin="round" className="w-3 h-3 flex-shrink-0">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+              <polyline points="14 2 14 8 20 8"/>
+            </svg>
+            PDF
           </a>
         </div>
       </div>
