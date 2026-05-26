@@ -199,7 +199,7 @@ export default function Home() {
                   text-indigo-600 dark:text-indigo-400">
                   {t('profile.role')}
                 </p>
-                <h1 className="text-5xl md:text-6xl font-extrabold tracking-tight leading-none
+                <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight leading-none
                   text-gray-900 dark:text-white">
                   {t('profile.name')}
                 </h1>

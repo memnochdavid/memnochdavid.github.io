@@ -135,7 +135,7 @@ function Header({ textLogo1, textLogo2 }) {
         <LocaleDropdown />
 
         <a href="#/projects"
-          className="text-sm font-semibold px-4 py-2 rounded-xl transition-all duration-200
+          className="hidden sm:inline-flex text-sm font-semibold px-4 py-2 rounded-xl transition-all duration-200
             text-gray-600 dark:text-gray-300
             hover:text-gray-900 dark:hover:text-white
             hover:bg-gray-100 dark:hover:bg-white/8">
@@ -144,9 +144,10 @@ function Header({ textLogo1, textLogo2 }) {
 
         <a href="resources/CV - David Duque Díaz.pdf"
           download="CV - David Duque Díaz.pdf"
-          className="text-sm font-semibold px-4 py-2 rounded-xl transition-all duration-200
+          className="text-sm font-semibold px-3 sm:px-4 py-2 rounded-xl transition-all duration-200
             bg-indigo-600 hover:bg-indigo-500 text-white">
-          {t('header.cv')} ↓
+          <span className="sm:hidden">CV ↓</span>
+          <span className="hidden sm:inline">{t('header.cv')} ↓</span>
         </a>
       </div>
     </header>

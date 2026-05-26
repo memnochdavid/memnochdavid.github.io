@@ -70,7 +70,10 @@ function StackedScreenshots({ images, inView, interactive = false, portrait = fa
   const [hasEntered, setHasEntered] = useState(false);
 
   const paddingTop = portrait ? '222%' : '62%';
-  const wrapStyle = portrait ? { maxWidth: 260, margin: '0 auto' } : {};
+  // On mobile: left-align so back cards use the available right space.
+  // On sm+: center — wider columns have enough room for the back-card overflow.
+  const wrapStyle = portrait ? { maxWidth: 260 } : {};
+  const wrapClass = `relative select-none${portrait ? ' mx-0 sm:mx-auto' : ''}`;
   const CONFIGS = portrait ? STACK_CONFIGS_PORTRAIT : STACK_CONFIGS_LANDSCAPE;
 
   // Once the entry stagger completes, remove delays so cycling is instant
@@ -83,7 +86,7 @@ function StackedScreenshots({ images, inView, interactive = false, portrait = fa
 
   if (!images?.length) {
     return (
-      <div style={wrapStyle}>
+      <div className={wrapClass} style={wrapStyle}>
         <div className="relative w-full rounded-2xl bg-gray-200 dark:bg-gray-800/40 border border-gray-200 dark:border-white/5"
           style={{ paddingTop }} />
       </div>
@@ -94,7 +97,7 @@ function StackedScreenshots({ images, inView, interactive = false, portrait = fa
   const showCount = Math.min(total, CONFIGS.length);
 
   return (
-    <div className="relative select-none" style={wrapStyle}>
+    <div className={wrapClass} style={wrapStyle}>
       <div className="relative w-full" style={{ paddingTop }}>
         {images.map((src, imgIdx) => {
           // Each image has a stable key → its card persists and animates between positions
@@ -315,7 +318,7 @@ function ProjectDetail({ project, onBack }) {
               </div>
             </div>
 
-            <div className="w-full md:w-64 shrink-0 rounded-2xl overflow-hidden border border-gray-200 dark:border-white/5 aspect-[9/16]">
+            <div className="w-full max-w-[260px] mx-auto md:mx-0 md:w-64 md:max-w-none shrink-0 rounded-2xl overflow-hidden border border-gray-200 dark:border-white/5 aspect-[9/16]">
               <iframe src={project.videoUrl} className="w-full h-full block"
                 title={`Demo · ${t(project.titleKey)}`}
                 frameBorder="0"
