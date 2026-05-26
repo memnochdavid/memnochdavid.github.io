@@ -15,6 +15,8 @@
   { "id": "firebase",  "name": "Firebase",       "urlImgFlag": "img/icon-firebase.svg",   "category": "mobile" },
   { "id": "compose",   "name": "Jetpack Compose","urlImgFlag": "img/icon-jpcompose.svg",  "category": "mobile" },
   { "id": "mui",       "name": "Material UI",    "urlImgFlag": "img/icon-materialui.svg", "category": "mobile" },
-  { "id": "mariadb",   "name": "MariaDB",        "urlImgFlag": "img/icon-mariadb.svg",    "category": "database" },
-  { "id": "postgres",  "name": "PostgreSQL",     "urlImgFlag": "img/icon-postgre.svg",    "category": "database" }
+  { "id": "mariadb",       "name": "MariaDB",        "urlImgFlag": "img/icon-mariadb.svg",         "category": "database" },
+  { "id": "postgres",      "name": "PostgreSQL",     "urlImgFlag": "img/icon-postgre.svg",         "category": "database" },
+  { "id": "docker",        "name": "Docker",         "urlImgFlag": "img/icon-docker.png",          "category": "devops" },
+  { "id": "dockercompose", "name": "Docker Compose", "urlImgFlag": "img/icon-docker-compose.png",  "category": "devops" }
 ]

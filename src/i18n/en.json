@@ -90,15 +90,15 @@
     "loggex": {
       "title": "Loggex",
       "subtitle": "Academic Management Platform",
-      "description": "A comprehensive educational management system that centralizes school administration, scheduling, attendance, assignments and grading. Built with Symfony 8 + React 19, deployed with Docker and S3 storage.",
-      "highlights": "33 entities · 11 functional modules · 5 languages · Real-time with Mercure SSE · Drag-and-drop schedule editor · Official BOE catalog (230 itineraries, ~2,230 subjects) · PDF export · Roles: Superadmin, Admin, Teacher, Student",
-      "modules": "Center · Academic structure · People & enrollment · Scheduling & planning · Attendance · Tasks & assignments · Grading · Syllabi · Communication · Schedule incidents · Official catalog"
+      "description": "A multi-tenant SaaS platform for comprehensive school management in the Spanish educational system, covering the full academic lifecycle: enrolment, timetabling, daily teaching delivery, grading and role-based communication. Its most technically demanding component is the scheduling engine — purpose-built constraint solvers (bin-packing and iterative) that generate complete weekly timetables while respecting legal working-hour limits, heterogeneous weekly quotas and a granular week-by-week exception model. An automated integration with the official BOE catalogue seeds over 230 vocational programmes and ~2,230 subjects with zero manual entry, and each centre gets its own dynamic theming system with 80+ CSS variables. 37 entities, 7 Docker services, Mercure SSE real-time across 39 resources, async job queue on Redis and MinIO S3 storage — in 5 languages.",
+      "highlights": "37 entities · Multi-tenant per centre · Scheduling engine with custom solvers · Real-time with Mercure SSE · Official BOE catalog (230+ programmes, ~2,230 subjects) · Dynamic theming (80+ CSS vars/centre) · 5 languages · Async jobs with Redis · PDF export · Roles: Superadmin, Admin, Teacher, Student",
+      "modules": "Centre · Programmes & subjects · Groups & enrolment · Schedule editor · Teaching periods · Attendance · Tasks & assignments · Grading · Syllabi · Messaging · Announcements · Notifications · Official catalogue"
     },
     "dexter": {
       "title": "Project Dexter",
-      "subtitle": "Pokémon Trainer App",
-      "description": "Native Android app featuring a complete Pokédex with advanced search engine, team planner, real-time messaging and Pokémon news aggregator.",
-      "highlights": "Full Pokédex · Multi-criteria filtering · Team planner · Messaging & forums · News aggregator · Roles & permissions · Kotlin + Jetpack Compose · Firebase"
+      "subtitle": "Pokémon App for Trainers",
+      "description": "Native Android Pokédex powered by PokéAPI v2 with Spanish descriptions via WikiDex scraping. Browse ~1,000 Pokémon by generation (I-IX) with type, form and rarity filters; view full detail sheets covering stats, moves, evolutions, encounters and type effectiveness; explore ~900 moves and ~1,000 items. Features Pokémon identification via device camera using Google Gemini Vision AI.",
+      "highlights": "Pokédex 9 generations (I-IX) · Camera identification (Gemini AI) · 9-tab detail sheet · Filter by type, form & rarity · ~900 moves · ~1,000+ items & berries · 10 regions · WikiDex scraping · Type animated backgrounds · 3-level cache · Shared element transitions"
     }
   },
   "footer": {

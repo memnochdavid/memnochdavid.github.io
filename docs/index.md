@@ -11,6 +11,10 @@
 Cada hoja de ruta tiene un estado, criterios de aceptación y enlaces a los assets relevantes.
 Para retomar el trabajo, simplemente pide que examine este `index.md`.
 
+**Documentos de apoyo** (leer si la sesión toca esos temas):
+- [`docs/loggex-portfolio.md`](loggex-portfolio.md) — Contenido propuesto para la vista de Loggex: descripción, highlights, módulos, stack chips corregido y lista de capturas necesarias. Leer antes de editar `projects.json` o los i18n de Loggex.
+- [`docs/dexter-portfolio.md`](dexter-portfolio.md) — Contenido propuesto para la vista de Dexter: corrección de datos erróneos (Firebase, Material UI, features inexistentes), stack chips corregido, descripción, highlights y lista de capturas. Leer antes de editar `projects.json` o los i18n de Dexter.
+
 ---
 
 ## Estado general de los roadmaps
@@ -197,7 +201,7 @@ Para retomar el trabajo, simplemente pide que examine este `index.md`.
 
 | Proyecto  | TFG | Año | Descripción |
 |-----------|-----|-----|-------------|
-| **Loggex** | DAW | 2026 | Plataforma integral de gestión académica para centros educativos. Symfony 8 + React 19, Docker, MinIO, Mercure SSE, 33 entidades, 5 idiomas. |
+| **Loggex** | DAW | 2026 | Plataforma integral de gestión académica para centros educativos. Symfony 8 + React 19, Docker, MinIO, Mercure SSE, 37 entidades, 5 idiomas. |
 | **Dexter** | DAM | 2025 | App Pokémon Pokedex nativa en Kotlin + Jetpack Compose con Firebase. |
 
 **Implementado:**
@@ -211,8 +215,13 @@ Para retomar el trabajo, simplemente pide que examine este `index.md`.
 - [x] Dots interactivos debajo de la imagen
 
 **Pendiente:**
-- [ ] Capturas/screenshots reales de cada proyecto
-- [ ] Enlaces a repos de GitHub en `projects.json`
+- [ ] Aplicar contenido propuesto para Loggex (ver [`docs/loggex-portfolio.md`](loggex-portfolio.md)): descripción, highlights, módulos y stack chips corregido
+- [ ] Aplicar contenido propuesto para Dexter (ver [`docs/dexter-portfolio.md`](dexter-portfolio.md)): corregir datos erróneos (Firebase, Material UI, features inexistentes), stack chips y highlights
+- [ ] Capturas reales de Loggex: 3 landscape desktop — ver lista en `loggex-portfolio.md`
+- [ ] Capturas reales de Dexter: 3 portrait mobile — ver lista en `dexter-portfolio.md`
+- [ ] Añadir `screenshotRatio` a `projects.json` para que Dexter use aspect ratio portrait en el stack
+- [ ] Iconos faltantes en `public/img/`: Loggex: `icon-apiplatform.svg`, `icon-docker.svg`, `icon-redis.svg`, `icon-minio.svg` / Dexter: `icon-material3.svg`, `icon-room.svg`, `icon-retrofit.svg`, `icon-gemini.svg`
+- [ ] Añadir `repoUrl` a ambos proyectos cuando los repos sean públicos
 
 **Archivos afectados:**
 - `src/pages/Tfg.jsx` → reemplazado por `Projects.jsx`

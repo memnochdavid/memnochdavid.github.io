@@ -39,9 +39,11 @@
     "stack": [
       { "name": "Kotlin", "icon": "img/icon-kotlin.svg" },
       { "name": "Jetpack Compose", "icon": "img/icon-jpcompose.svg" },
-      { "name": "Firebase", "icon": "img/icon-firebase.svg" },
-      { "name": "Android", "icon": "img/icon-android.svg" },
-      { "name": "Material UI", "icon": "img/icon-materialui.svg" }
+      { "name": "Material 3", "icon": "img/icon-materialui.svg" },
+      { "name": "Room", "icon": "img/icon-room-db.svg" },
+      { "name": "Retrofit", "icon": "img/icon-retrofit.png" },
+      { "name": "Gemini AI", "icon": "img/icon-gemini.svg" },
+      { "name": "Android", "icon": "img/icon-android.svg" }
     ],
     "logoUrl": "img/logo-dexter.png",
     "videoUrl": "https://www.youtube.com/embed/E4Q2EPS4j3s",

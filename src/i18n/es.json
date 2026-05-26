@@ -90,15 +90,15 @@
     "loggex": {
       "title": "Loggex",
       "subtitle": "Plataforma integral de gestión académica",
-      "description": "Sistema completo de gestión educativa que centraliza la administración de centros, horarios, asistencia, tareas y calificaciones. Desarrollado con Symfony 8 + React 19, desplegado con Docker y almacenamiento S3.",
-      "highlights": "33 entidades · 11 módulos funcionales · 5 idiomas · Tiempo real con Mercure SSE · Horarios con editor drag-and-drop · Catálogo oficial BOE (230 itinerarios, ~2.230 materias) · Exportación PDF · Roles: Superadmin, Admin, Profesor, Alumno",
-      "modules": "Centro · Estructura académica · Personas y matrículas · Horarios y planificación · Asistencia · Tareas y entregas · Calificaciones · Temarios · Comunicación · Incidencias de horario · Catálogo oficial"
+      "description": "Plataforma SaaS multi-tenant para la gestión integral de centros educativos españoles: desde la estructura del centro y las matriculaciones hasta la impartición diaria de clases, calificaciones y comunicación entre roles. El núcleo técnico más exigente es el motor de horarios — solvers propios (bin-packing + iterativo) que generan cuadros horarios completos respetando restricciones legales de jornada, cuotas semanales heterogéneas y un modelo de excepciones granular semana a semana. Se integra con el catálogo oficial BOE para materializar automáticamente más de 230 itinerarios formativos y ~2.230 materias, y cada centro dispone de theming dinámico con más de 80 variables CSS propias. 37 entidades, 7 servicios Docker, tiempo real con Mercure SSE en 39 recursos, cola de jobs asíncronos con Redis y almacenamiento en MinIO S3 — en 5 idiomas.",
+      "highlights": "37 entidades · Multi-tenant por centro · Motor de horarios con solvers propios · Tiempo real con Mercure SSE · Catálogo oficial BOE (230+ itinerarios, ~2.230 materias) · Theming dinámico (80+ variables CSS/centro) · 5 idiomas · Jobs asíncronos con Redis · Exportación PDF · Roles: Superadmin, Admin, Profesor, Alumno",
+      "modules": "Centro · Itinerarios y materias · Grupos y matrículas · Editor de horarios · Periodos lectivos · Asistencia · Tareas y entregas · Calificaciones · Temarios · Mensajería · Comunicados · Notificaciones · Catálogo oficial"
     },
     "dexter": {
       "title": "Project Dexter",
       "subtitle": "App Pokémon para entrenadores",
-      "description": "Aplicación Android nativa que integra una Pokédex completa con motor de búsqueda avanzada, planificador de equipos, mensajería en tiempo real y agregador de noticias Pokémon.",
-      "highlights": "Pokédex integral · Filtrado multicriterio · Planificador de equipos · Mensajería y foros · Agregador de noticias · Roles y permisos · Kotlin + Jetpack Compose · Firebase"
+      "description": "Pokédex Android nativa con datos de PokéAPI v2 y descripciones en español vía scraping de WikiDex. Permite explorar los ~1.000 Pokémon por generación (I-IX) con filtrado por tipo, forma y rareza, consultar fichas completas con estadísticas, movimientos, evoluciones, localizaciones y efectividad de tipos, y navegar un catálogo de ~900 movimientos y ~1.000 objetos. Incluye identificación de Pokémon por cámara mediante Google Gemini Vision.",
+      "highlights": "Pokédex 9 generaciones (I-IX) · Identificación por cámara (Gemini AI) · Ficha de 9 pestañas · Filtrado por tipo, forma y rareza · ~900 movimientos · ~1.000+ objetos y bayas · 10 regiones · WikiDex scraping · Fondos animados por tipo · Caché 3 niveles · Transiciones compartidas"
     }
   },
   "footer": {

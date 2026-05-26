@@ -90,15 +90,15 @@
     "loggex": {
       "title": "Loggex",
       "subtitle": "Plataforma integral de gestió acadèmica",
-      "description": "Sistema complet de gestió educativa que centralitza l'administració de centres, horaris, assistència, tasques i qualificacions. Desenvolupat amb Symfony 8 + React 19, desplegat amb Docker i emmagatzematge S3.",
-      "highlights": "33 entitats · 11 mòduls funcionals · 5 idiomes · Temps real amb Mercure SSE · Horaris amb editor drag-and-drop · Catàleg oficial BOE (230 itineraris, ~2.230 matèries) · Exportació PDF · Rols: Superadmin, Admin, Professor, Alumne",
-      "modules": "Centre · Estructura acadèmica · Persones i matrícules · Horaris i planificació · Assistència · Tasques i lliuraments · Qualificacions · Temaris · Comunicació · Incidències d'horari · Catàleg oficial"
+      "description": "Plataforma SaaS multi-tenant per a la gestió integral de centres educatius espanyols: des de l'estructura del centre i les matriculacions fins a la impartició diària de classes, qualificacions i comunicació entre rols. El nucli tècnic més exigent és el motor d'horaris — solvers propis (bin-packing + iteratiu) que generen quadres horaris complets respectant restriccions legals de jornada, quotes setmanals heterogènies i un model d'excepcions granular setmana a setmana. S'integra amb el catàleg oficial BOE per materialitzar automàticament més de 230 itineraris formatius i ~2.230 matèries, i cada centre disposa de theming dinàmic amb més de 80 variables CSS pròpies. 37 entitats, 7 serveis Docker, temps real amb Mercure SSE en 39 recursos, cua de jobs asíncrons amb Redis i emmagatzematge a MinIO S3 — en 5 idiomes.",
+      "highlights": "37 entitats · Multi-tenant per centre · Motor d'horaris amb solvers propis · Temps real amb Mercure SSE · Catàleg oficial BOE (230+ itineraris, ~2.230 matèries) · Theming dinàmic (80+ variables CSS/centre) · 5 idiomes · Jobs asíncrons amb Redis · Exportació PDF · Rols: Superadmin, Admin, Professor, Alumne",
+      "modules": "Centre · Itineraris i matèries · Grups i matrícules · Editor d'horaris · Períodes lectius · Assistència · Tasques i lliuraments · Qualificacions · Temaris · Missatgeria · Comunicats · Notificacions · Catàleg oficial"
     },
     "dexter": {
       "title": "Project Dexter",
       "subtitle": "App Pokémon per a entrenadors",
-      "description": "Aplicació Android nativa que integra una Pokédex completa amb motor de cerca avançada, planificador d'equips, missatgeria en temps real i agregador de notícies Pokémon.",
-      "highlights": "Pokédex integral · Filtratge multicriteri · Planificador d'equips · Missatgeria i fòrums · Agregador de notícies · Rols i permisos · Kotlin + Jetpack Compose · Firebase"
+      "description": "Pokédex Android nativa amb dades de PokéAPI v2 i descripcions en espanyol via scraping de WikiDex. Permet explorar els ~1.000 Pokémon per generació (I-IX) amb filtrat per tipus, forma i raresa, consultar fitxes completes amb estadístiques, moviments, evolucions, localitzacions i efectivitat de tipus, i navegar un catàleg de ~900 moviments i ~1.000 objectes. Inclou identificació de Pokémon per càmera mitjançant Google Gemini Vision.",
+      "highlights": "Pokédex 9 generacions (I-IX) · Identificació per càmera (Gemini AI) · Fitxa de 9 pestanyes · Filtrat per tipus, forma i raresa · ~900 moviments · ~1.000+ objectes i baies · 10 regions · WikiDex scraping · Fons animats per tipus · Caché 3 nivells · Transicions compartides"
     }
   },
   "footer": {

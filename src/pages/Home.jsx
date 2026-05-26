@@ -37,6 +37,35 @@ function Reveal({ children, className = '', delay = 0 }) {
   );
 }
 
+function MailIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75"
+      strokeLinecap="round" strokeLinejoin="round" className="w-3.5 h-3.5 flex-shrink-0">
+      <rect x="2" y="4" width="20" height="16" rx="2" />
+      <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+    </svg>
+  );
+}
+
+function PhoneIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75"
+      strokeLinecap="round" strokeLinejoin="round" className="w-3.5 h-3.5 flex-shrink-0">
+      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.16 6.16l.98-.93a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" />
+    </svg>
+  );
+}
+
+function PinIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75"
+      strokeLinecap="round" strokeLinejoin="round" className="w-3.5 h-3.5 flex-shrink-0">
+      <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
+      <circle cx="12" cy="10" r="3" />
+    </svg>
+  );
+}
+
 function SectionHeader({ eyebrow, title }) {
   return (
     <div className="mb-10">
@@ -58,6 +87,7 @@ const SKILL_CATEGORIES = [
   { id: 'backend',  label: 'Backend',  accent: 'text-violet-600 dark:text-violet-400' },
   { id: 'mobile',   label: 'Mobile',   accent: 'text-emerald-600 dark:text-emerald-400' },
   { id: 'database', label: 'Database', accent: 'text-amber-600 dark:text-amber-400' },
+  { id: 'devops',   label: 'DevOps',   accent: 'text-cyan-600 dark:text-cyan-400' },
 ];
 
 function SkillChip({ skill }) {
@@ -110,8 +140,8 @@ function TimelineEntry({ title, subtitle, description, years, location, badge, d
         )}
         <div className="flex flex-wrap items-center gap-2 mt-3">
           {location && (
-            <span className="text-xs text-gray-400 dark:text-gray-500">
-              📍 {location}
+            <span className="inline-flex items-center gap-1 text-xs text-gray-400 dark:text-gray-500">
+              <PinIcon /> {location}
             </span>
           )}
           {badge && (
@@ -181,17 +211,17 @@ export default function Home() {
 
               <div className="flex flex-col sm:flex-row gap-2 sm:gap-5 items-center md:items-start justify-center md:justify-start">
                 <a href={`mailto:${profileData.email}`}
-                  className="text-sm transition-colors
+                  className="inline-flex items-center gap-1.5 text-sm transition-colors
                     text-gray-500 hover:text-indigo-600
                     dark:text-gray-400 dark:hover:text-indigo-300">
-                  ✉ {profileData.email}
+                  <MailIcon /> {profileData.email}
                 </a>
                 <span className="hidden sm:block text-gray-300 dark:text-white/10">·</span>
                 <a href={`tel:${profileData.phone.replace(/[\s()]/g, '')}`}
-                  className="text-sm transition-colors
+                  className="inline-flex items-center gap-1.5 text-sm transition-colors
                     text-gray-500 hover:text-indigo-600
                     dark:text-gray-400 dark:hover:text-indigo-300">
-                  ☎ {profileData.phone}
+                  <PhoneIcon /> {profileData.phone}
                 </a>
               </div>
 
