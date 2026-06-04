@@ -91,6 +91,11 @@
   .lang-name { font-size: 9pt; color: #e2e8f0; }
   .lang-level { font-size: 7.5pt; color: #6366f1; }
 
+  .contact-block { display: flex; flex-direction: column; gap: 6px; }
+  .contact-item { display: flex; align-items: flex-start; gap: 7px; }
+  .contact-label { font-size: 7pt; color: #6366f1; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; min-width: 22px; margin-top: 1px; }
+  .contact-value { font-size: 7.5pt; color: #cbd5e1; word-break: break-all; }
+
   /* ── Main ── */
   .main { padding: 32px 28px; display: flex; flex-direction: column; gap: 24px; }
   .main-section h2 {
@@ -140,6 +145,17 @@
       <div class="role">Full-Stack Developer</div>
     </div>
 
+    <div class="contact-block">
+      <div class="contact-item">
+        <span class="contact-label">Email</span>
+        <span class="contact-value">davduquediaz@gmail.com</span>
+      </div>
+      <div class="contact-item">
+        <span class="contact-label">Web</span>
+        <span class="contact-value">memnochdavid.github.io</span>
+      </div>
+    </div>
+
     <div class="divider"></div>
 
     <div class="sidebar-section">
@@ -182,7 +198,7 @@
       <h2>{{T_LANGUAGES}}</h2>
       <div class="lang-item"><span class="lang-name">{{T_SPANISH}}</span><span class="lang-level">{{T_NATIVE}}</span></div>
       <div class="lang-item"><span class="lang-name">{{T_ENGLISH}}</span><span class="lang-level">C1 · {{T_PROFICIENT}}</span></div>
-      <div class="lang-item"><span class="lang-name">{{T_CATALAN}}</span><span class="lang-level">B1 · {{T_BASIC}}</span></div>
+      <div class="lang-item"><span class="lang-name">{{T_CATALAN}}</span><span class="lang-level">{{T_NATIVE}}</span></div>
     </div>
   </aside>
 
