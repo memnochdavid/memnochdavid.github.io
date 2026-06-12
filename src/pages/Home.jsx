@@ -243,7 +243,7 @@ export default function Home() {
               </div>
 
               <div className="flex gap-3 justify-center md:justify-start">
-                <a href="resources/CV - David Duque Díaz.pdf" download
+                <a href={`resources/CV - David Duque Díaz${locale === 'es' ? '' : ` ${locale.toUpperCase()}`}.pdf`} download={`CV - David Duque Díaz${locale === 'es' ? '' : ` ${locale.toUpperCase()}`}.pdf`}
                   className="inline-flex items-center gap-2 text-white font-semibold px-5 py-2.5 rounded-xl transition-all duration-200 text-sm
                     bg-indigo-600 hover:bg-indigo-500">
                   {t('header.cv')} ↓
