@@ -13,28 +13,27 @@
     line-height: 1.45;
   }
 
-  .page {
-    width: 210mm;
-    min-height: 297mm;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: 68mm 1fr;
-  }
+  .page { width: 210mm; }
 
-  /* ── Sidebar ── */
+  /* ── Sidebar (fixed = repeats on every printed page) ── */
   .sidebar {
+    position: fixed;
+    top: 0; left: 0;
+    width: 68mm;
+    height: 297mm;
     background: #0f172a;
     color: #e2e8f0;
     padding: 32px 20px;
     display: flex;
     flex-direction: column;
-    gap: 28px;
+    gap: 22px;
+    overflow: hidden;
   }
 
   .avatar-block { text-align: center; }
   .avatar-block img {
-    width: 90px;
-    height: 90px;
+    width: 84px;
+    height: 84px;
     border-radius: 50%;
     object-fit: cover;
     border: 3px solid #6366f1;
@@ -42,14 +41,14 @@
     display: block;
   }
   .avatar-block h1 {
-    font-size: 15pt;
+    font-size: 14pt;
     font-weight: 700;
     color: #fff;
     line-height: 1.25;
     margin-bottom: 4px;
   }
   .avatar-block .role {
-    font-size: 8.5pt;
+    font-size: 8pt;
     font-weight: 500;
     color: #6366f1;
     text-transform: uppercase;
@@ -65,7 +64,7 @@
     color: #6366f1;
     margin-bottom: 10px;
   }
-  .skill-group { margin-bottom: 10px; }
+  .skill-group { margin-bottom: 9px; }
   .skill-group-label {
     font-size: 7.5pt;
     color: #94a3b8;
@@ -93,11 +92,11 @@
 
   .contact-block { display: flex; flex-direction: column; gap: 6px; }
   .contact-item { display: flex; align-items: flex-start; gap: 7px; }
-  .contact-label { font-size: 7pt; color: #6366f1; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; min-width: 22px; margin-top: 1px; }
+  .contact-label { font-size: 7pt; color: #6366f1; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; min-width: 28px; margin-top: 1px; flex-shrink: 0; }
   .contact-value { font-size: 7.5pt; color: #cbd5e1; word-break: break-all; }
 
   /* ── Main ── */
-  .main { padding: 32px 28px; display: flex; flex-direction: column; gap: 24px; }
+  .main { margin-left: 68mm; padding: 32px 28px; display: flex; flex-direction: column; gap: 22px; }
   .main-section h2 {
     font-size: 8pt;
     font-weight: 700;
@@ -106,9 +105,20 @@
     color: #6366f1;
     border-bottom: 1.5px solid #e0e7ff;
     padding-bottom: 4px;
-    margin-bottom: 14px;
+    margin-bottom: 12px;
   }
-  .entry { margin-bottom: 13px; position: relative; padding-left: 12px; }
+  .section-note { font-size: 7.5pt; color: #94a3b8; margin: -6px 0 12px; }
+
+  .new-page {
+    break-before: page;
+    page-break-before: always;
+    padding-top: 32px;
+  }
+
+  .profile-text { font-size: 9pt; color: #334155; line-height: 1.65; }
+
+  .entry { margin-bottom: 12px; position: relative; padding-left: 12px; break-inside: avoid; page-break-inside: avoid; }
+  .entry:last-child { margin-bottom: 0; }
   .entry::before {
     content: '';
     position: absolute;
@@ -133,6 +143,36 @@
     margin-left: 6px;
     font-weight: 600;
   }
+
+  .bullet-list { list-style: none; margin: 6px 0 0; padding: 0; display: flex; flex-direction: column; gap: 3px; }
+  .bullet-list li { font-size: 8.3pt; color: #475569; line-height: 1.45; padding-left: 12px; position: relative; }
+  .bullet-list li::before { content: '▸'; position: absolute; left: 0; top: 0; color: #6366f1; font-size: 7.5pt; }
+
+  .mini-entries { display: flex; flex-direction: column; gap: 6px; }
+  .mini-entry { font-size: 8pt; color: #64748b; line-height: 1.5; }
+  .mini-entry b { color: #334155; font-weight: 600; }
+  .mini-date { color: #6366f1; font-weight: 600; font-size: 7.5pt; }
+
+  /* ── Projects ── */
+  .project-card {
+    border: 1px solid #e0e7ff;
+    border-radius: 10px;
+    padding: 14px 16px;
+    margin-bottom: 14px;
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+  .project-card:last-child { margin-bottom: 0; }
+  .project-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 8px; }
+  .project-title { font-size: 10.5pt; font-weight: 700; color: #0f172a; line-height: 1.3; }
+  .project-subtitle { font-size: 8.5pt; color: #6366f1; font-weight: 500; margin-top: 1px; }
+  .project-badge {
+    font-size: 7pt; font-weight: 700; white-space: nowrap; flex-shrink: 0;
+    background: #ede9fe; color: #7c3aed; border-radius: 20px; padding: 2px 8px;
+  }
+  .project-desc { font-size: 8.5pt; color: #64748b; margin: 7px 0 8px; line-height: 1.5; }
+  .project-stack { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 8px; }
+  .project-stack .tag { background: #eef2ff; border-color: #e0e7ff; color: #4f46e5; }
 </style>
 </head>
 <body>
@@ -142,13 +182,17 @@
     <div class="avatar-block">
       <img src="AVATAR_BASE64" alt="David Duque Díaz" />
       <h1>David<br>Duque Díaz</h1>
-      <div class="role">Full-Stack Developer</div>
+      <div class="role">{{T_ROLE}}</div>
     </div>
 
     <div class="contact-block">
       <div class="contact-item">
         <span class="contact-label">Email</span>
         <span class="contact-value">davduquediaz@gmail.com</span>
+      </div>
+      <div class="contact-item">
+        <span class="contact-label">{{T_PHONE_LABEL}}</span>
+        <span class="contact-value">+34 622 71 58 86</span>
       </div>
       <div class="contact-item">
         <span class="contact-label">Web</span>
@@ -159,7 +203,7 @@
     <div class="divider"></div>
 
     <div class="sidebar-section">
-      <h2>Tech Stack</h2>
+      <h2>{{T_TECHSTACK}}</h2>
       <div class="skill-group">
         <div class="skill-group-label">Backend</div>
         <div class="tags">
@@ -203,60 +247,113 @@
   </aside>
 
   <main class="main">
+
     <div class="main-section">
+      <h2>{{T_PROFILE}}</h2>
+      <p class="profile-text">{{T_PROFILE_TEXT}}</p>
+    </div>
+
+    <div class="main-section">
+      <h2>{{T_PROJECTS}}</h2>
+      <p class="section-note">{{T_PROJECTS_NOTE}}</p>
+
+      <div class="project-card">
+        <div class="project-header">
+          <div>
+            <div class="project-title">{{T_LOGGEX_TITLE}}</div>
+            <div class="project-subtitle">Loggex Machina</div>
+          </div>
+          <div class="project-badge">{{T_LOGGEX_BADGE}}</div>
+        </div>
+        <p class="project-desc">{{T_LOGGEX_DESC}}</p>
+        <ul class="bullet-list">
+          <li>{{T_LOGGEX_B1}}</li>
+          <li>{{T_LOGGEX_B2}}</li>
+          <li>{{T_LOGGEX_B3}}</li>
+          <li>{{T_LOGGEX_B4}}</li>
+          <li>{{T_LOGGEX_B5}}</li>
+          <li>{{T_LOGGEX_B6}}</li>
+        </ul>
+        <div class="project-stack">
+          <span class="tag">Symfony 8</span><span class="tag">API Platform</span>
+          <span class="tag">React 19</span><span class="tag">PHP 8.4</span>
+          <span class="tag">Docker</span><span class="tag">MariaDB</span>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-header">
+          <div>
+            <div class="project-title">{{T_DEXTER_TITLE}}</div>
+            <div class="project-subtitle">Project Dexter</div>
+          </div>
+          <div class="project-badge">{{T_DEXTER_BADGE}}</div>
+        </div>
+        <p class="project-desc">{{T_DEXTER_DESC}}</p>
+        <ul class="bullet-list">
+          <li>{{T_DEXTER_B1}}</li>
+          <li>{{T_DEXTER_B2}}</li>
+          <li>{{T_DEXTER_B3}}</li>
+          <li>{{T_DEXTER_B4}}</li>
+          <li>{{T_DEXTER_B5}}</li>
+          <li>{{T_DEXTER_B6}}</li>
+        </ul>
+        <div class="project-stack">
+          <span class="tag">Kotlin</span><span class="tag">Jetpack Compose</span>
+          <span class="tag">Room</span><span class="tag">Retrofit</span>
+          <span class="tag">Gemini AI</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="main-section new-page">
       <h2>{{T_EXPERIENCE}}</h2>
 
       <div class="entry">
         <div class="entry-header">
           <div class="entry-title">{{T_SW_DEV}} <span class="entry-type">({{T_INTERNSHIP}} DAW)</span></div>
-          <div class="entry-date">2026</div>
+          <div class="entry-date">03/2026 – 06/2026</div>
         </div>
         <div class="entry-company">Aixa AI · Granada</div>
-        <div class="entry-desc">{{T_AIXA_DESC}}</div>
+        <ul class="bullet-list">
+          <li>{{T_AIXA_B1}}</li>
+          <li>{{T_AIXA_B2}}</li>
+          <li>{{T_AIXA_B3}}</li>
+        </ul>
       </div>
 
       <div class="entry">
         <div class="entry-header">
           <div class="entry-title">{{T_SW_DEV}} <span class="entry-type">({{T_INTERNSHIP}} DAM)</span></div>
-          <div class="entry-date">2025</div>
+          <div class="entry-date">03/2025 – 06/2025</div>
         </div>
         <div class="entry-company">Gesvision · Baza</div>
-        <div class="entry-desc">{{T_GESVISION_DESC}}</div>
+        <ul class="bullet-list">
+          <li>{{T_GESVISION_B1}}</li>
+          <li>{{T_GESVISION_B2}}</li>
+          <li>{{T_GESVISION_B3}}</li>
+        </ul>
       </div>
 
       <div class="entry">
         <div class="entry-header">
           <div class="entry-title">{{T_OPERATOR}}</div>
-          <div class="entry-date">2021 – 2023</div>
+          <div class="entry-date">07/2021 – 07/2023</div>
         </div>
         <div class="entry-company">COSENTINO · Almería</div>
-        <div class="entry-desc">{{T_COSENTINO_DESC}}</div>
+        <ul class="bullet-list">
+          <li>{{T_COSENTINO_B1}}</li>
+          <li>{{T_COSENTINO_B2}}</li>
+        </ul>
       </div>
 
       <div class="entry">
-        <div class="entry-header">
-          <div class="entry-title">{{T_TAXI}}</div>
-          <div class="entry-date">2017 – 2019</div>
+        <div class="entry-title" style="font-size: 8.5pt; text-transform: uppercase; letter-spacing: 0.08em; color: #94a3b8; margin-bottom: 8px;">{{T_OTHER_EXP}}</div>
+        <div class="mini-entries">
+          <div class="mini-entry"><b>{{T_TAXI}}</b> · {{T_FREELANCE}}, Baza <span class="mini-date">10/2017–12/2019</span><br>{{T_TAXI_DESC}}</div>
+          <div class="mini-entry"><b>{{T_ENGLISH_TUTOR}}</b> · {{T_FREELANCE}}, Baza <span class="mini-date">09/2013–12/2016</span><br>{{T_ENGLISH_TUTOR_DESC}}</div>
+          <div class="mini-entry"><b>{{T_IT_TUTOR}}</b> · Colegio Jabalcón, Baza <span class="mini-date">09/2009–06/2010</span><br>{{T_IT_TUTOR_DESC}}</div>
         </div>
-        <div class="entry-company">{{T_FREELANCE}} · Baza</div>
-      </div>
-
-      <div class="entry">
-        <div class="entry-header">
-          <div class="entry-title">{{T_ENGLISH_TUTOR}}</div>
-          <div class="entry-date">2013 – 2016</div>
-        </div>
-        <div class="entry-company">{{T_FREELANCE}} · Baza</div>
-        <div class="entry-desc">{{T_ENGLISH_TUTOR_DESC}}</div>
-      </div>
-
-      <div class="entry">
-        <div class="entry-header">
-          <div class="entry-title">{{T_IT_TUTOR}}</div>
-          <div class="entry-date">2009 – 2010</div>
-        </div>
-        <div class="entry-company">Colegio Jabalcón · Baza</div>
-        <div class="entry-desc">{{T_IT_TUTOR_DESC}}</div>
       </div>
     </div>
 
